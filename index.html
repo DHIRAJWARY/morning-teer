@@ -43,10 +43,7 @@
             </div>
             <div class="card card-white">
                 <div class="deal-tags">
-                    <span style="color:green; font-size: 24px; font-weight: 900;">D</span>
-                    <span style="color:blue; font-size: 24px; font-weight: 900;">E</span>
-                    <span style="color:red; font-size: 24px; font-weight: 900;">A</span>
-                    <span style="color:orange; font-size: 24px; font-weight: 900;">L</span>
+                    <span style="color:green;">D</span><span style="color:blue;">E</span><span style="color:red;">A</span><span style="color:orange;">L</span>
                 </div>
             </div>
             <div class="card card-orange">
@@ -56,47 +53,35 @@
         </div>
 
         <div class="card-grid">
-            <div class="card card-dark-blue">
-                <div class="icon-img">📊</div>
-                <p>Analytics</p>
-            </div>
-            <div class="card card-brown">
-                <div class="icon-img">🏹</div>
-                <p>Predict Target</p>
-            </div>
-            <div class="card card-teal">
-                <div class="icon-img">🎯</div>
-                <p>Previous Result</p>
-            </div>
+            <div class="card card-dark-blue"><div class="icon-img">📊</div><p>Analytics</p></div>
+            <div class="card card-brown"><div class="icon-img">🏹</div><p>Predict Target</p></div>
+            <div class="card card-teal"><div class="icon-img">🎯</div><p>Previous Result</p></div>
         </div>
 
         <section class="history-section" style="margin-top: 40px;">
-            <h3 style="text-align:center; margin-bottom:10px;">Previous Results (History)</h3>
-            <table class="result-table" style="font-size: 15px;">
+            <h3>Previous Results</h3>
+            <table class="history-table">
                 <thead>
-                    <tr style="background:#333; color:white;">
-                        <th style="padding: 10px;">Date</th>
+                    <tr>
+                        <th>Date</th>
                         <th>F/R</th>
                         <th>S/R</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="history-body">
                     <tr>
                         <td>19/02/2026</td>
-                        <td>45</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>18/02/2026</td>
-                        <td>12</td>
-                        <td>89</td>
+                        <td><strong>45</strong></td>
+                        <td><strong>22</strong></td>
+                        <td><span class="badge-confirmed">OFFICIAL</span></td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
         <footer style="text-align: center; margin-top: 50px; padding-bottom: 20px;">
-            <a href="admin/index.html" style="color: #eee; text-decoration: none; font-size: 10px;">Admin Login</a>
+            <a href="admin/index.html" style="color: #ccc; text-decoration: none; font-size: 10px;">Admin Login</a>
         </footer>
     </div>
 
