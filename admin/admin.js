@@ -15,8 +15,7 @@ function saveData() {
         srT: document.getElementById('srTime').value,
         sr: document.getElementById('srNum').value
     };
-
     localStorage.setItem('teerResult', JSON.stringify(data));
-    alert("Updated locally! To make it PERMANENT for everyone, you must edit index.html on GitHub with these numbers.");
+    alert("Updated locally! Remember to edit GitHub to make it permanent for everyone.");
     window.location.href = "../index.html";
 }
