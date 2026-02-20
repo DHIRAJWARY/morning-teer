@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header class="main-header">
-        <div class="logo-area"><h1>Morning Teer</h1></div>
+        <div class="logo-area">
+            <span class="logo-icon">🎯</span>
+            <h1>Morning Teer</h1>
+        </div>
     </header>
 
     <div class="main-container">
+        
         <section class="results-section">
             <div class="date-display" id="res-date">20/02/2026</div>
             <table class="result-table">
-                <thead><tr><th colspan="2">SHILLONG</th></tr></thead>
+                <thead>
+                    <tr><th colspan="2">SHILLONG</th></tr>
+                </thead>
                 <tbody>
                     <tr class="round-names">
                         <td id="fr-time-label">F/R (10:30 AM)</td>
@@ -29,12 +36,46 @@
             </table>
         </section>
 
+        <div class="card-grid">
+            <div class="card card-orange">
+                <div class="big-icon">Ⓒ</div>
+                <p>Common Number</p>
+            </div>
+            <div class="card card-white">
+                <div class="deal-tags">
+                    <span style="color:green; font-size: 24px; font-weight: 900;">D</span>
+                    <span style="color:blue; font-size: 24px; font-weight: 900;">E</span>
+                    <span style="color:red; font-size: 24px; font-weight: 900;">A</span>
+                    <span style="color:orange; font-size: 24px; font-weight: 900;">L</span>
+                </div>
+            </div>
+            <div class="card card-orange">
+                <div class="big-icon">👤</div>
+                <p>Dream Number</p>
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card card-dark-blue">
+                <div class="icon-img">📊</div>
+                <p>Analytics</p>
+            </div>
+            <div class="card card-brown">
+                <div class="icon-img">🏹</div>
+                <p>Predict Target</p>
+            </div>
+            <div class="card card-teal">
+                <div class="icon-img">🎯</div>
+                <p>Previous Result</p>
+            </div>
+        </div>
+
         <section class="history-section" style="margin-top: 40px;">
-            <h3 style="text-align:center; margin-bottom:10px;">Previous Results</h3>
-            <table class="result-table" style="font-size: 14px;">
+            <h3 style="text-align:center; margin-bottom:10px;">Previous Results (History)</h3>
+            <table class="result-table" style="font-size: 15px;">
                 <thead>
                     <tr style="background:#333; color:white;">
-                        <th>Date</th>
+                        <th style="padding: 10px;">Date</th>
                         <th>F/R</th>
                         <th>S/R</th>
                     </tr>
@@ -45,14 +86,20 @@
                         <td>45</td>
                         <td>22</td>
                     </tr>
+                    <tr>
+                        <td>18/02/2026</td>
+                        <td>12</td>
+                        <td>89</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <footer style="text-align: center; margin-top: 50px;">
-            <a href="admin/index.html" style="color: #ccc; text-decoration: none; font-size: 10px;">Admin Login</a>
+        <footer style="text-align: center; margin-top: 50px; padding-bottom: 20px;">
+            <a href="admin/index.html" style="color: #eee; text-decoration: none; font-size: 10px;">Admin Login</a>
         </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
