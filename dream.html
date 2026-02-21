@@ -6,105 +6,107 @@
     <title>Morning Teer | Dream Numbers</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .search-box { width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid #82c0e4; border-radius: 8px; font-size: 16px; }
-        .dream-table { width: 100%; border-collapse: collapse; background: white; font-size: 13px; }
-        .dream-table th { background: #2c3e50; color: white; position: sticky; top: 0; padding: 10px; }
-        .dream-table td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        .search-box { width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid #82c0e4; border-radius: 8px; font-size: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .dream-table { width: 100%; border-collapse: collapse; background: white; font-size: 14px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .dream-table th { background: #2c3e50; color: white; position: sticky; top: 0; padding: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .dream-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
         .dream-table tr:nth-child(even) { background: #f2f9ff; }
-        .dream-table tr:hover { background: #d4edda; }
-        .num-cell { font-weight: bold; color: #ff7043; }
+        .dream-table tr:hover { background: #d4edda; transition: 0.2s; }
+        .num-cell { font-weight: bold; color: #ff7043; letter-spacing: 0.5px; }
+        .he-cell { font-weight: bold; color: #00897b; text-align: center; }
     </style>
 </head>
 <body>
     <header class="main-header">
         <div class="logo-area">
-            <a href="index.html" style="text-decoration:none; font-size:20px; margin-right:10px;">⬅️</a>
+            <a href="index.html" style="text-decoration:none; font-size:24px; margin-right:15px; color:#000;">⬅️</a>
             <h1>Dream Numbers</h1>
         </div>
     </header>
 
     <div class="main-container">
-        <input type="text" id="dreamSearch" class="search-box" placeholder="Search your dream (e.g. Snake, Water)..." onkeyup="filterTable()">
+        <input type="text" id="dreamSearch" class="search-box" placeholder="Search dream (e.g. Tiger, Gold)..." onkeyup="filterTable()">
         
         <table class="dream-table" id="dreamTable">
             <thead>
                 <tr>
                     <th>Dream</th>
                     <th>Numbers</th>
-                    <th>H/E</th>
+                    <th>House</th>
+                    <th>Ending</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Quarrel between husband and wife</td><td class="num-cell">03, 08, 13, 37, 43, 73</td><td>3 / 8</td></tr>
-                <tr><td>Small stream</td><td class="num-cell">17, 43, 53, 59, 63, 98</td><td>x / 8</td></tr>
-                <tr><td>Bathing in the open</td><td class="num-cell">08, 18, 28, 48, 78, 98</td><td>x / x</td></tr>
-                <tr><td>Traveling</td><td class="num-cell">08, 14, 18, 52, 64, 68, 73, 83, 93</td><td>3 / 3</td></tr>
-                <tr><td>Traveling in an airplane</td><td class="num-cell">23, 43, 53, 63, 68, 73, 83, 93</td><td>7 / 3</td></tr>
-                <tr><td>Taking a walk</td><td class="num-cell">x</td><td>0, 1 / 0, 7</td></tr>
-                <tr><td>Studying</td><td class="num-cell">03, 38, 54, 44, 52</td><td>x / 6</td></tr>
-                <tr><td>Corpse</td><td class="num-cell">09</td><td>9 / 9</td></tr>
-                <tr><td>Playing</td><td class="num-cell">00, 27, 40, 50, 57, 60</td><td>x / 0</td></tr>
-                <tr><td>Talking on the phone</td><td class="num-cell">x</td><td>9 / 9</td></tr>
-                <tr><td>Sailing</td><td class="num-cell">01, 02, 05, 11, 14, 42, 73, 83, 93</td><td>4 / 1</td></tr>
-                <tr><td>Breast feeding</td><td class="num-cell">02, 03, 05, 12, 20, 52, 53</td><td>0 / 2</td></tr>
-                <tr><td>Male</td><td class="num-cell">06</td><td>6 / 6</td></tr>
-                <tr><td>Female</td><td class="num-cell">05</td><td>5 / 5</td></tr>
-                <tr><td>Child</td><td class="num-cell">23</td><td>2 / 3</td></tr>
-                <tr><td>Police</td><td class="num-cell">07, 47, 08</td><td>7 / x</td></tr>
-                <tr><td>Wild pig</td><td class="num-cell">46</td><td>4 / 6</td></tr>
-                <tr><td>Snake or red fish</td><td class="num-cell">09, 17, 37, 57, 77, 99</td><td>7 / 7</td></tr>
-                <tr><td>Cow, goat, Buffalo</td><td class="num-cell">12, 18, 19, 22, 24, 34, 42, 54, 72, 74, 84, 94, 97</td><td>1 / 4</td></tr>
-                <tr><td>Cow</td><td class="num-cell">06</td><td>x / 6</td></tr>
-                <tr><td>Cat</td><td class="num-cell">03, 13</td><td>x / 3</td></tr>
-                <tr><td>Dog</td><td class="num-cell">04, 05, 06</td><td>4 / 4</td></tr>
-                <tr><td>Horse</td><td class="num-cell">08</td><td>x / x</td></tr>
-                <tr><td>Bird</td><td class="num-cell">02, 12</td><td>2 / 2</td></tr>
-                <tr><td>Elephant</td><td class="num-cell">09</td><td>9 / 9</td></tr>
-                <tr><td>Bear</td><td class="num-cell">00</td><td>0 / 0</td></tr>
-                <tr><td>Turtle</td><td class="num-cell">x</td><td>x / x</td></tr>
-                <tr><td>Crab</td><td class="num-cell">06, 62</td><td>6 / 6</td></tr>
-                <tr><td>Spider</td><td class="num-cell">06, 12</td><td>6 / 2</td></tr>
-                <tr><td>Honey bee</td><td class="num-cell">74, 24, 04, 14, 54</td><td>4 / 4</td></tr>
-                <tr><td>Bamboo</td><td class="num-cell">0, 1, 11</td><td>x / 1</td></tr>
-                <tr><td>Bear fruits</td><td class="num-cell">00, 03, 11, 12, 13, 23, 32, 33, 43, 63, 73, 78, 79, 83</td><td>x / 3</td></tr>
-                <tr><td>Paddy field</td><td class="num-cell">24, 38, 52, 54, 44, 48, 74</td><td>x / x</td></tr>
-                <tr><td>Pumpkin</td><td class="num-cell">28, 38, 48, 53, 58, 68, 78, 83, 88</td><td>x / x</td></tr>
-                <tr><td>Bamboo</td><td class="num-cell">01, 00, 11</td><td>1 / 0</td></tr>
-                <tr><td>Big tree</td><td class="num-cell">88, 18, 89, 19</td><td>x / 9</td></tr>
-                <tr><td>Small tree</td><td class="num-cell">23, 33</td><td>2, 3 / x</td></tr>
-                <tr><td>Banana</td><td class="num-cell">11, 13</td><td>1 / 3</td></tr>
-                <tr><td>Jackfruit</td><td class="num-cell">04</td><td>x / 4</td></tr>
-                <tr><td>Papaya</td><td class="num-cell">01, 12</td><td>1 / 2</td></tr>
-                <tr><td>Orange</td><td class="num-cell">08, 09</td><td>x / 9</td></tr>
-                <tr><td>Book</td><td class="num-cell">0, 00, 12</td><td>x / 0</td></tr>
-                <tr><td>Bamboo shell</td><td class="num-cell">01, 11</td><td>1 / 1</td></tr>
-                <tr><td>Knife, cutter, chopper, hammer</td><td class="num-cell">07, 17, 27, 47, 67, 71, 87</td><td>7 / 7</td></tr>
-                <tr><td>An oven or a shopping place</td><td class="num-cell">18, 28, 38, 52, 58, 62</td><td>3 / 3</td></tr>
-                <tr><td>Money</td><td class="num-cell">00, 14, 15, 20, 25, 35, 50</td><td>0 / 5</td></tr>
-                <tr><td>Small water body</td><td class="num-cell">00, 01, 02, 80, 90</td><td>4, 7 / 0</td></tr>
-                <tr><td>Footpaths or a road made of bricks</td><td class="num-cell">08, 61, 71, 91</td><td>1 / 1</td></tr>
-                <tr><td>Auto mobile (4 Wheeler)</td><td class="num-cell">21, 24, 54, 62, 64</td><td>x / 4</td></tr>
-                <tr><td>Auto mobile (2/3 Wheeler)</td><td class="num-cell">52, 53, 54, 58, 60, 62, 63</td><td>5 / x</td></tr>
-                <tr><td>Gold</td><td class="num-cell">02, 12, 23, 43</td><td>x / 3</td></tr>
-                <tr><td>Books, papers</td><td class="num-cell">0, 00, 03</td><td>0 / 3</td></tr>
-                <tr><td>Earthquake</td><td class="num-cell">00, 07, 08, 14, 41, 75, 85</td><td>8 / 7</td></tr>
-                <tr><td>Ghost or apparition</td><td class="num-cell">52, 54, 58, 62, 64, 68</td><td>5 / 8</td></tr>
-                <tr><td>Dam, lake, fountain</td><td class="num-cell">12, 21, 42, 62, 48</td><td>x / x</td></tr>
-                <tr><td>Fire</td><td class="num-cell">x</td><td>9 / 9</td></tr>
-                <tr><td>Hand pump</td><td class="num-cell">02, 03, 07, 17, 18, 20, 71</td><td>0 / 1</td></tr>
-                <tr><td>Water carrier</td><td class="num-cell">08</td><td>x / x</td></tr>
-                <tr><td>Lake</td><td class="num-cell">08, 60</td><td>0 / 0</td></tr>
-                <tr><td>Boat</td><td class="num-cell">03, 30, 73, 37</td><td>x / 3</td></tr>
-                <tr><td>Rice chopper</td><td class="num-cell">08, 87, 78, 63, 18</td><td>x / x</td></tr>
-                <tr><td>Big river</td><td class="num-cell">08</td><td>x / x</td></tr>
-                <tr><td>Cooking pan</td><td class="num-cell">02</td><td>x / x</td></tr>
-                <tr><td>Shoes</td><td class="num-cell">08</td><td>x / x</td></tr>
-                <tr><td>Temple</td><td class="num-cell">01, 02, 09</td><td>x / 9</td></tr>
-                <tr><td>Train</td><td class="num-cell">08, 09, 08, 08</td><td>x / 8</td></tr>
-                <tr><td>Umbrella</td><td class="num-cell">01</td><td>1 / 1</td></tr>
-                <tr><td>Egg</td><td class="num-cell">07, 77, 76</td><td>7 / x</td></tr>
-                <tr><td>Baby child</td><td class="num-cell">03</td><td>3 / 3</td></tr>
-                </tbody>
+                <tr><td>Quarrel between husband and wife</td><td class="num-cell">03,08,13,37,40,73</td><td class="he-cell">3</td><td class="he-cell">3</td></tr>
+                <tr><td>Erotic dream</td><td class="num-cell">17,40,53,59,60,98</td><td class="he-cell">5</td><td class="he-cell">6</td></tr>
+                <tr><td>Bathing in the open</td><td class="num-cell">08,18,28,48,78,98</td><td class="he-cell">8</td><td class="he-cell">8</td></tr>
+                <tr><td>Traveling</td><td class="num-cell">08,18,14,52,64,68,73,83,93</td><td class="he-cell">3</td><td class="he-cell">3</td></tr>
+                <tr><td>Traveling in an aeroplane</td><td class="num-cell">23,43,53,63,68,73,83,93</td><td class="he-cell">7</td><td class="he-cell">3</td></tr>
+                <tr><td>Taking a walk</td><td class="num-cell">76,67,01</td><td class="he-cell">0,1</td><td class="he-cell">6,7</td></tr>
+                <tr><td>Studying</td><td class="num-cell">00,05,06,64,54</td><td class="he-cell">5</td><td class="he-cell">6</td></tr>
+                <tr><td>Corpse</td><td class="num-cell">99</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Playing</td><td class="num-cell">00,27,40,50,57,60</td><td class="he-cell">5</td><td class="he-cell">0</td></tr>
+                <tr><td>Talking over the phone</td><td class="num-cell">98,96,94</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Eating</td><td class="num-cell">01,02,05,15,16,45,75,85,95</td><td class="he-cell">0</td><td class="he-cell">5</td></tr>
+                <tr><td>Breast feeding</td><td class="num-cell">02,03,05,12,20,52,53</td><td class="he-cell">0</td><td class="he-cell">2</td></tr>
+                <tr><td>Male</td><td class="num-cell">06</td><td class="he-cell">6</td><td class="he-cell">6</td></tr>
+                <tr><td>Female</td><td class="num-cell">05</td><td class="he-cell">5</td><td class="he-cell">5</td></tr>
+                <tr><td>Child</td><td class="num-cell">23</td><td class="he-cell">3</td><td class="he-cell">2</td></tr>
+                <tr><td>Police</td><td class="num-cell">07,87,08</td><td class="he-cell">7</td><td class="he-cell">8</td></tr>
+                <tr><td>Wild pig</td><td class="num-cell">46</td><td class="he-cell">4</td><td class="he-cell">6</td></tr>
+                <tr><td>Snake or eel fish</td><td class="num-cell">09,07,37,57,77,99</td><td class="he-cell">7</td><td class="he-cell">7</td></tr>
+                <tr><td>Cow,goat, Buffalo</td><td class="num-cell">12,18,19,22,24,34,42,54,72,74,84,94,97</td><td class="he-cell">1</td><td class="he-cell">4</td></tr>
+                <tr><td>Cow</td><td class="num-cell">04</td><td class="he-cell">4</td><td class="he-cell">4</td></tr>
+                <tr><td>Tiger</td><td class="num-cell">09</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Dog</td><td class="num-cell">04,05,06</td><td class="he-cell">4</td><td class="he-cell">4</td></tr>
+                <tr><td>Horse</td><td class="num-cell">08</td><td class="he-cell">8</td><td class="he-cell">8</td></tr>
+                <tr><td>Bird</td><td class="num-cell">02,12</td><td class="he-cell">2</td><td class="he-cell">2</td></tr>
+                <tr><td>Elephant</td><td class="num-cell">09</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Snail</td><td class="num-cell">00</td><td class="he-cell">0</td><td class="he-cell">0</td></tr>
+                <tr><td>Turtle</td><td class="num-cell">09</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Crab</td><td class="num-cell">06,02</td><td class="he-cell">6</td><td class="he-cell">6</td></tr>
+                <tr><td>Spider</td><td class="num-cell">06,12</td><td class="he-cell">6</td><td class="he-cell">2</td></tr>
+                <tr><td>Honey bee</td><td class="num-cell">74,24,04,14,94</td><td class="he-cell">4</td><td class="he-cell">4</td></tr>
+                <tr><td>Insects</td><td class="num-cell">37,21</td><td class="he-cell">2</td><td class="he-cell">3</td></tr>
+                <tr><td>Sour fruits</td><td class="num-cell">00,03,11,12,13,23,32,53,43,63,73,70,79,93</td><td class="he-cell">3</td><td class="he-cell">3</td></tr>
+                <tr><td>Paddy field</td><td class="num-cell">24,38,52,54,64,68,74</td><td class="he-cell">8</td><td class="he-cell">8</td></tr>
+                <tr><td>Pumpkin</td><td class="num-cell">28,35,48,53,58,68,78,88,98</td><td class="he-cell">8</td><td class="he-cell">8</td></tr>
+                <tr><td>Bamboo</td><td class="num-cell">01,00,11</td><td class="he-cell">1</td><td class="he-cell">0</td></tr>
+                <tr><td>Big tree</td><td class="num-cell">88,18,99,19</td><td class="he-cell">8</td><td class="he-cell">9</td></tr>
+                <tr><td>Small tree</td><td class="num-cell">23,38</td><td class="he-cell">2,3</td><td class="he-cell">8</td></tr>
+                <tr><td>Banana</td><td class="num-cell">11,13</td><td class="he-cell">1</td><td class="he-cell">3</td></tr>
+                <tr><td>Jackfruit</td><td class="num-cell">44</td><td class="he-cell">4</td><td class="he-cell">4</td></tr>
+                <tr><td>Papaya</td><td class="num-cell">01,12</td><td class="he-cell">1</td><td class="he-cell">2</td></tr>
+                <tr><td>Orange</td><td class="num-cell">08,09</td><td class="he-cell">8</td><td class="he-cell">9</td></tr>
+                <tr><td>Chilli</td><td class="num-cell">01,02</td><td class="he-cell">1</td><td class="he-cell">2</td></tr>
+                <tr><td>Bamboo shot</td><td class="num-cell">01,11</td><td class="he-cell">1</td><td class="he-cell">1</td></tr>
+                <tr><td>Tools,cutter, chopper,hammer</td><td class="num-cell">07,17,27,47,67,71,87</td><td class="he-cell">7</td><td class="he-cell">7</td></tr>
+                <tr><td>An event or a shopping place</td><td class="num-cell">18,28,38,52,58,62</td><td class="he-cell">3</td><td class="he-cell">3</td></tr>
+                <tr><td>Money</td><td class="num-cell">00,14,15,20,25,35,50</td><td class="he-cell">0</td><td class="he-cell">5</td></tr>
+                <tr><td>Small water body</td><td class="num-cell">00,01,02,80,90</td><td class="he-cell">4,7</td><td class="he-cell">0</td></tr>
+                <tr><td>Footpaths or a road makes of bricks</td><td class="num-cell">19,61,71,96</td><td class="he-cell">1</td><td class="he-cell">1</td></tr>
+                <tr><td>Auto mobile, 4 wheelers</td><td class="num-cell">21,24,54,62,64</td><td class="he-cell">8</td><td class="he-cell">4</td></tr>
+                <tr><td>Auto mobile2/3 wheelers</td><td class="num-cell">52,53,54,58,60,62,68</td><td class="he-cell">0</td><td class="he-cell">5</td></tr>
+                <tr><td>God</td><td class="num-cell">90,13,29,89</td><td class="he-cell">0</td><td class="he-cell">9</td></tr>
+                <tr><td>Books,pen,paper</td><td class="num-cell">00,02,05</td><td class="he-cell">0</td><td class="he-cell">3</td></tr>
+                <tr><td>Earthquake</td><td class="num-cell">00,07,08,14,41,75,95</td><td class="he-cell">0</td><td class="he-cell">7</td></tr>
+                <tr><td>Ghost or apparition</td><td class="num-cell">52,54,58,62,64,68</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>0ven, kiln, fireplace</td><td class="num-cell">12, 31, 63, 66, 68</td><td class="he-cell">6</td><td class="he-cell">6</td></tr>
+                <tr><td>Fire</td><td class="num-cell">91, 94, 69</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Hand pump</td><td class="num-cell">02, 03, 07, 17, 18, 20, 71</td><td class="he-cell">0</td><td class="he-cell">1</td></tr>
+                <tr><td>Water carrier</td><td class="num-cell">08</td><td class="he-cell">8</td><td class="he-cell">8</td></tr>
+                <tr><td>Lake</td><td class="num-cell">06, 60</td><td class="he-cell">0</td><td class="he-cell">2</td></tr>
+                <tr><td>Boat</td><td class="num-cell">03, 30, 73, 37</td><td class="he-cell">0</td><td class="he-cell">3</td></tr>
+                <tr><td>Rice chopper</td><td class="num-cell">08, 87, 78, 43, 18</td><td class="he-cell">8</td><td class="he-cell">6</td></tr>
+                <tr><td>Big river</td><td class="num-cell">08</td><td class="he-cell">8</td><td class="he-cell">7</td></tr>
+                <tr><td>Cooking pan</td><td class="num-cell">02</td><td class="he-cell">0</td><td class="he-cell">2</td></tr>
+                <tr><td>Shoe</td><td class="num-cell">09</td><td class="he-cell">9</td><td class="he-cell">9</td></tr>
+                <tr><td>Temple</td><td class="num-cell">01, 02, 03,</td><td class="he-cell">0</td><td class="he-cell">9</td></tr>
+                <tr><td>Train</td><td class="num-cell">09, 08, 08</td><td class="he-cell">8</td><td class="he-cell">9</td></tr>
+                <tr><td>Umbrella</td><td class="num-cell">01</td><td class="he-cell">1</td><td class="he-cell">1</td></tr>
+                <tr><td>Pencil</td><td class="num-cell">07, 77, 79</td><td class="he-cell">7</td><td class="he-cell">7</td></tr>
+                <tr><td>Baby, child</td><td class="num-cell">03,</td><td class="he-cell">3</td><td class="he-cell">3</td></tr>
+            </tbody>
         </table>
     </div>
 
