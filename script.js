@@ -1,16 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     const savedData = localStorage.getItem('teerResult');
+    
     if (savedData) {
         const data = JSON.parse(savedData);
-        const today = new Date().toLocaleDateString('en-GB');
+        
+        // Get today's date to verify
+        const now = new Date();
+        const todayStr = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
 
-        // Only show if the date in storage matches today's date
-        if (data.date === today) {
-            document.getElementById('res-date').innerText = data.date;
-            document.getElementById('fr-val').innerText = data.fr;
-            document.getElementById('sr-val').innerText = data.sr;
-            document.getElementById('fr-time-label').innerText = `F/R (${data.frT})`;
-            document.getElementById('sr-time-label').innerText = `S/R (${data.srT})`;
+        // Update the UI only if the result is for today
+        if (data.date === todayStr) {
+            if(document.getElementById('res-date')) document.getElementById('res-date').innerText = data.date;
+            if(document.getElementById('fr-val')) document.getElementById('fr-val').innerText = data.fr || "--";
+            if(document.getElementById('sr-val')) document.getElementById('sr-val').innerText = data.sr || "--";
+            
+            // Update Round Times
+            const frLabel = document.getElementById('fr-time-label');
+            const srLabel = document.getElementById('sr-time-label');
+            if(frLabel) frLabel.innerText = `F/R (${data.frT})`;
+            if(srLabel) srLabel.innerText = `S/R (${data.srT})`;
         }
     }
 });
