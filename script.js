@@ -1,18 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Always fetch from results.json to ensure all devices match
-    fetch('results.json?nocache=' + new Date().getTime())
-        .then(response => response.json())
-        .then(data => {
-            const today = new Date().toLocaleDateString('en-GB');
-            if (data.date === today) {
-                document.getElementById('res-date').innerText = data.date;
-                document.getElementById('fr-val').innerText = data.fr;
-                document.getElementById('sr-val').innerText = data.sr;
-                
-                // Set the corrected times
-                document.getElementById('fr-time-label').innerText = `F/R (10:33 AM)`;
-                document.getElementById('sr-time-label').innerText = `S/R (11:33 AM)`;
-            }
+    const jsonUrl = 'results.json';
+
+    function updateUI(data) {
+        const resDate = document.getElementById('res-date');
+        const frVal = document.getElementById('fr-val');
+        const srVal = document.getElementById('sr-val');
+        const frLabel = document.getElementById('fr-time-label');
+        const srLabel = document.getElementById('sr-time-label');
+
+        if (resDate) resDate.innerText = data.date;
+        if (frVal) frVal.innerText = data.fr;
+        if (srVal) srVal.innerText = data.sr;
+        if (frLabel) frLabel.innerText = `F/R (${data.frT || '10:33 AM'})`;
+        if (srLabel) srLabel.innerText = `S/R (${data.srT || '11:33 AM'})`;
+    }
+
+    // 1. Try to fetch from GitHub first (for all users)
+    fetch(jsonUrl + '?v=' + new Date().getTime())
+        .then(response => {
+            if (!response.ok) throw new Error('File not found');
+            return response.json();
         })
-        .catch(() => console.log("Waiting for results.json..."));
+        .then(data => {
+            console.log("Loaded from GitHub:", data);
+            updateUI(data);
+        })
+        .catch(err => {
+            console.warn("GitHub fetch failed, checking local storage...");
+            // 2. Fallback: Try to load from local memory (for you/admin)
+            const localData = localStorage.getItem('teerResult');
+            if (localData) {
+                updateUI(JSON.parse(localData));
+            }
+        });
 });
