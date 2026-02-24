@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const year = today.getFullYear();
         const currentDateString = `${day}/${month}/${year}`;
 
+        // If stored result date isn't today, clear it
         if (data.date !== currentDateString) {
             localStorage.removeItem('teerResult');
             return; 
         }
 
-        // Update UI
+        // Update Live Result UI
         if(document.getElementById('res-date')) document.getElementById('res-date').innerText = data.date;
         if(document.getElementById('fr-val')) document.getElementById('fr-val').innerText = data.fr;
         if(document.getElementById('sr-val')) document.getElementById('sr-val').innerText = data.sr;
