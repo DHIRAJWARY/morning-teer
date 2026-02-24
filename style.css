@@ -1,205 +1,56 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* Header and Layout */
+body { font-family: Arial, sans-serif; margin: 0; background-color: #f8f9fa; }
+.main-header { background-color: #85C1E9; padding: 10px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 10px; border-bottom: 2px solid #34495e; }
+.main-header h1 { font-size: 18px; margin: 0; color: #2c3e50; }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    line-height: 1.5;
-}
+.main-container { max-width: 500px; margin: auto; padding: 10px; }
 
-/* Header */
-.main-header {
-    background-color: #82c0e4;
-    padding: 15px;
-    border-bottom: 3px solid #2c3e50;
-    text-align: center;
-}
+/* Result Table */
+.results-section { text-align: center; margin-bottom: 20px; }
+.date-display { font-weight: bold; padding: 10px; }
+.result-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.result-table th { background: #34495e; color: white; padding: 8px; }
+.round-names { background: #4ed9c1; font-size: 12px; font-weight: bold; }
+.round-numbers td { font-size: 28px; font-weight: bold; padding: 20px 0; border: 1px solid #eee; }
 
-.logo-area {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.logo-icon {
-    font-size: 2.2rem;
-}
-
-.main-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #2c3e50;
-}
-
-.main-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 15px;
-}
-
-/* Today's Result Table */
-.result-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 2px solid #2c3e50;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.result-table th {
-    background: #2c3e50;
-    color: white;
-    padding: 12px;
-    font-size: 18px;
-}
-
-.round-names {
-    background: #48c9b0;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-}
-
-.round-names td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-.round-numbers td {
-    padding: 20px;
-    font-size: 38px;
-    font-weight: 900;
-    text-align: center;
-    border: 1px solid #ddd;
-    background: #f8f9fa;
-}
-
-/* Feature Cards Grid */
+/* THE FIX: 3x3 Grid Layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(3, 1fr); /* FORCES 3 COLUMNS */
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .card {
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
-    color: white;
-    font-weight: bold;
-    font-size: 11px;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    padding: 12px;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.big-icon, .icon-img {
-    font-size: 3.2rem;
-    margin-bottom: 10px;
-}
-
-.card p {
-    margin: 0;
     text-align: center;
-    font-size: 0.95rem;
+    padding: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Original card colors (kept as fallback/base) */
-.card-orange   { background: #ff7043; }
-.card-white    { background: white; color: #333; border: 2px solid #ff7043; }
-.card-dark-blue { background: #006064; }
-.card-brown    { background: #4e342e; }
-.card-teal     { background: #00897b; }
+.card p { margin: 5px 0 0; font-size: 10px; font-weight: bold; }
+.big-icon { font-size: 24px; }
 
-/* New specific card colors (override when class is added) */
-.card-calendar { background-color: #31b1b9; color: white; }
-.card-counter  { background-color: #ffffff; color: #333; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.card-target   { background-color: #e91e63; color: white; }
+/* Card Colors */
+.card-orange { background-color: #ff7f50; color: white; }
+.card-white { background-color: white; border: 1px solid #ddd; color: black; }
+.card-dark-teal { background-color: #006666; color: white; }
+.card-brown { background-color: #5d4037; color: white; }
+.card-teal { background-color: #008080; color: white; }
+.card-light-teal { background-color: #31b1b9; color: white; }
+.card-pink { background-color: #e91e63; color: white; }
 
-.deal-tags span {
-    font-size: 22px;
-    font-weight: 900;
-    margin: 0 4px;
-}
+.deal-text { font-weight: bold; font-size: 14px; letter-spacing: 2px; }
+.deal-text span:nth-child(1) { color: green; }
+.deal-text span:nth-child(2) { color: blue; }
+.deal-text span:nth-child(3) { color: red; }
+.deal-text span:nth-child(4) { color: orange; }
 
-/* Date Display (assuming you have .date-display) */
-.date-display {
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 15px 0;
-    color: #2c3e50;
-}
-
-/* History Section */
-.history-section h3 {
-    color: #2c3e50;
-    border-left: 5px solid #82c0e4;
-    padding-left: 12px;
-    margin: 40px 0 15px;
-    font-size: 1.4rem;
-}
-
-.history-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 14px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    background: white;
-}
-
-.history-table thead {
-    background: #82c0e4;
-    color: #000;
-}
-
-.history-table th,
-.history-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-}
-
-.history-table tr:nth-child(even) td {
-    background: #f2f9ff;
-}
-
-.badge-confirmed {
-    background: #d4edda;
-    color: #155724;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: bold;
-}
-
-/* Responsive adjustments */
-@media (max-width: 500px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .round-numbers td {
-        font-size: 32px;
-        padding: 15px;
-    }
-}
+.admin-footer { text-align: center; margin-top: 30px; font-size: 12px; }
+.admin-footer a { color: #ccc; text-decoration: none; }
