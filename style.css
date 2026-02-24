@@ -1,22 +1,21 @@
-/* Header and Layout */
-body { font-family: Arial, sans-serif; margin: 0; background-color: #f8f9fa; }
-.main-header { background-color: #85C1E9; padding: 10px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 10px; border-bottom: 2px solid #34495e; }
-.main-header h1 { font-size: 18px; margin: 0; color: #2c3e50; }
+/* Core Layout */
+body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; }
+.main-header { background-color: #85C1E9; padding: 10px; text-align: center; border-bottom: 2px solid #2c3e50; }
+.main-header h1 { margin: 0; font-size: 20px; color: #2c3e50; }
+.main-container { max-width: 450px; margin: auto; padding: 10px; }
 
-.main-container { max-width: 500px; margin: auto; padding: 10px; }
-
-/* Result Table */
+/* Result Table Styles */
 .results-section { text-align: center; margin-bottom: 20px; }
-.date-display { font-weight: bold; padding: 10px; }
-.result-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.result-table th { background: #34495e; color: white; padding: 8px; }
+.date-display { font-weight: bold; margin-bottom: 5px; }
+.result-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.result-table th { background: #34495e; color: white; padding: 10px; }
 .round-names { background: #4ed9c1; font-size: 12px; font-weight: bold; }
-.round-numbers td { font-size: 28px; font-weight: bold; padding: 20px 0; border: 1px solid #eee; }
+.round-numbers td { font-size: 32px; font-weight: bold; padding: 20px 0; border: 1px solid #eee; }
 
-/* THE FIX: 3x3 Grid Layout */
+/* 3x3 Grid Enforcement */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* FORCES 3 COLUMNS */
+    grid-template-columns: repeat(3, 1fr); /* Forces 3 columns on all screens */
     gap: 10px;
     margin-top: 15px;
 }
@@ -31,26 +30,26 @@ body { font-family: Arial, sans-serif; margin: 0; background-color: #f8f9fa; }
     cursor: pointer;
     text-align: center;
     padding: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.card p { margin: 5px 0 0; font-size: 10px; font-weight: bold; }
-.big-icon { font-size: 24px; }
+.card p { margin: 5px 0 0; font-size: 10px; font-weight: bold; color: white; }
+.big-icon, .icon-img { font-size: 24px; }
 
-/* Card Colors */
-.card-orange { background-color: #ff7f50; color: white; }
-.card-white { background-color: white; border: 1px solid #ddd; color: black; }
-.card-dark-teal { background-color: #006666; color: white; }
-.card-brown { background-color: #5d4037; color: white; }
-.card-teal { background-color: #008080; color: white; }
-.card-light-teal { background-color: #31b1b9; color: white; }
-.card-pink { background-color: #e91e63; color: white; }
+/* Box Colors */
+.card-orange { background-color: #ff7f50; }
+.card-white { background-color: white; border: 1px solid #ddd; }
+.card-white .deal-tags { font-weight: bold; font-size: 16px; letter-spacing: 2px; }
+.card-dark-blue { background-color: #006666; }
+.card-brown { background-color: #5d4037; }
+.card-teal { background-color: #008080; }
+.card-light-teal { background-color: #31b1b9; }
+.card-white-border { background-color: white; border: 1px solid #ccc; }
+.card-white-border p { color: #a52a2a !important; }
+.card-pink { background-color: #e91e63; }
 
-.deal-text { font-weight: bold; font-size: 14px; letter-spacing: 2px; }
-.deal-text span:nth-child(1) { color: green; }
-.deal-text span:nth-child(2) { color: blue; }
-.deal-text span:nth-child(3) { color: red; }
-.deal-text span:nth-child(4) { color: orange; }
-
-.admin-footer { text-align: center; margin-top: 30px; font-size: 12px; }
-.admin-footer a { color: #ccc; text-decoration: none; }
+/* Footer Strip Styles */
+.footer-strip { background-color: #d3d3d3; padding: 15px; margin-top: 30px; text-align: center; border-radius: 5px; }
+.app-link { display: block; margin-bottom: 10px; color: blue; text-decoration: underline; font-size: 13px; font-weight: bold; }
+.footer-links { display: flex; justify-content: center; gap: 15px; }
+.footer-links a { color: blue; text-decoration: none; font-size: 12px; }
