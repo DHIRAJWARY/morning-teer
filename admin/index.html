@@ -1,33 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Morning Teer Admin</title>
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        .admin-box { background: white; padding: 25px; border-radius: 15px; max-width: 450px; margin: 50px auto; border: 2px solid #82c0e4; }
-        input { width: 100%; padding: 12px; margin: 8px 0 18px 0; border: 1px solid #ddd; border-radius: 8px; }
-        .btn { background: #48c9b0; color: white; padding: 15px; border: none; width: 100%; cursor: pointer; font-weight: bold; border-radius: 8px; }
-    </style>
-</head>
-<body>
-    <div id="login-gate" style="text-align:center; margin-top:100px;">
-        <h2>🔐 Admin Login</h2>
-        <input type="password" id="passInput" style="max-width:300px;">
-        <button class="btn" onclick="checkPassword()" style="max-width:300px;">Login</button>
-    </div>
+<div id="management-panel" style="display:none;">
+    <div class="admin-box">
+        <h3>Update Morning Teer</h3>
+        <label>Date:</label><input type="text" id="resDate" placeholder="DD/MM/YYYY">
+        <label>F/R Time:</label><input type="text" id="frTime" placeholder="10:30 AM">
+        <label>F/R Result:</label><input type="number" id="frNum">
+        <label>S/R Time:</label><input type="text" id="srTime" placeholder="11:30 AM">
+        <label>S/R Result:</label><input type="number" id="srNum">
+        
+        <button class="btn" onclick="saveData()">PUBLISH RESULT</button>
 
-    <div id="management-panel" style="display:none;">
-        <div class="admin-box">
-            <h3>Update Results</h3>
-            <label>Date:</label><input type="text" id="resDate" placeholder="20/02/2026">
-            <label>F/R Time:</label><input type="text" id="frTime" placeholder="10:30 AM">
-            <label>F/R Number:</label><input type="number" id="frNum">
-            <label>S/R Time:</label><input type="text" id="srTime" placeholder="11:30 AM">
-            <label>S/R Number:</label><input type="number" id="srNum">
-            <button class="btn" onclick="saveData()">PUBLISH TO MY VIEW</button>
+        <div id="historyGenerator" style="display:none; margin-top:20px; border-top:1px solid #ccc; padding-top:10px;">
+            <p style="font-size:11px;">Copy this to index.html on GitHub for History:</p>
+            <input type="text" id="copyBox" readonly onclick="this.select()">
         </div>
     </div>
-    <script src="admin.js"></script>
-</body>
-</html>
+</div>
