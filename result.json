@@ -1,7 +1,11 @@
+--- JSON FOR results.json ---
 {
-  "date": "24/02/2026",
+  "date": "25/02/2026",
   "fr": "42",
   "frT": "10:33 AM",
   "sr": "38",
   "srT": "11:33 AM"
 }
+
+--- ROW FOR previous-results.html ---
+<tr><td>25/02/2026</td><td><strong>42</strong></td><td><strong>38</strong></td><td><span class="badge-confirmed">OFFICIAL</span></td></tr>
