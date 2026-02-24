@@ -1,22 +1,21 @@
-/* Core Layout */
-body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; }
+body { font-family: sans-serif; margin: 0; background-color: #f4f7f6; }
 .main-header { background-color: #85C1E9; padding: 10px; text-align: center; border-bottom: 2px solid #2c3e50; }
 .main-header h1 { margin: 0; font-size: 20px; color: #2c3e50; }
 .main-container { max-width: 450px; margin: auto; padding: 10px; }
 
-/* Result Table Styles */
+/* Table Styles */
 .results-section { text-align: center; margin-bottom: 20px; }
-.date-display { font-weight: bold; margin-bottom: 5px; }
+.date-display { font-weight: bold; margin: 10px 0; }
 .result-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .result-table th { background: #34495e; color: white; padding: 10px; }
 .round-names { background: #4ed9c1; font-size: 12px; font-weight: bold; }
 .round-numbers td { font-size: 32px; font-weight: bold; padding: 20px 0; border: 1px solid #eee; }
 
-/* 3x3 Grid Enforcement */
+/* GRID FIX */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Forces 3 columns on all screens */
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 8px;
     margin-top: 15px;
 }
 
@@ -26,7 +25,7 @@ body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center;
     padding: 5px;
@@ -36,7 +35,7 @@ body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; }
 .card p { margin: 5px 0 0; font-size: 10px; font-weight: bold; color: white; }
 .big-icon, .icon-img { font-size: 24px; }
 
-/* Box Colors */
+/* Colors */
 .card-orange { background-color: #ff7f50; }
 .card-white { background-color: white; border: 1px solid #ddd; }
 .card-white .deal-tags { font-weight: bold; font-size: 16px; letter-spacing: 2px; }
@@ -48,7 +47,7 @@ body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7f6; }
 .card-white-border p { color: #a52a2a !important; }
 .card-pink { background-color: #e91e63; }
 
-/* Footer Strip Styles */
+/* Footer */
 .footer-strip { background-color: #d3d3d3; padding: 15px; margin-top: 30px; text-align: center; border-radius: 5px; }
 .app-link { display: block; margin-bottom: 10px; color: blue; text-decoration: underline; font-size: 13px; font-weight: bold; }
 .footer-links { display: flex; justify-content: center; gap: 15px; }
