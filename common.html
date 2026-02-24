@@ -12,6 +12,12 @@
         .common-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; border: 2px solid #31b1b9; }
         .common-table th { background-color: #4ed9c1; color: black; padding: 12px; border: 1px solid #000; font-size: 18px; }
         .common-table td { padding: 15px; border: 1px solid #000; font-size: 20px; font-weight: bold; background: white; }
+        
+        /* Disclaimer & Footer Styles */
+        .disclaimer-area { margin-top: 40px; text-align: center; font-size: 14px; color: #333; }
+        .footer-strip { background-color: #e0e0e0; padding: 15px; margin-top: 20px; border-radius: 4px; }
+        .footer-links { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+        .footer-links a { color: blue; text-decoration: underline; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -23,7 +29,7 @@
     </header>
 
     <div class="main-container common-container">
-        <div class="date-header" id="common-date">--/--/----</div>
+        <div class="date-header" id="common-date">24/02/2026</div>
         <div class="title-header">Common Number</div>
 
         <table class="common-table">
@@ -43,6 +49,20 @@
                 <tr><td id="d2">--</td><td id="h2">--</td><td id="e2">--</td></tr>
             </tbody>
         </table>
+
+        <div class="disclaimer-area">
+            <p>Disclaimer: Daily Morning Teer common numbers are purely based on certain calculations done using past results. There is no guarantee of the accuracy of these numbers.</p>
+            <p style="font-weight: bold; margin-top: 10px;">Note: There is no making number in Teer</p>
+            
+            <div class="footer-strip">
+                <a href="#" style="display: block; margin-bottom: 5px; color: blue;">Download our Teer Android App - OTP NOT REQUIRED. Available in All Countries.</a>
+                <div class="footer-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -50,9 +70,9 @@
             const saved = localStorage.getItem('commonNumbers');
             if (saved) {
                 const data = JSON.parse(saved);
-                const today = new Date().toLocaleDateString('en-GB'); // DD/MM/YYYY
+                const today = new Date().toLocaleDateString('en-GB'); 
 
-                // Midnight Reset: Remove if date doesn't match today
+                // Midnight Reset Logic: Clear if date is not today
                 if (data.date !== today) {
                     localStorage.removeItem('commonNumbers');
                     return;
