@@ -8,48 +8,76 @@
 </head>
 <body>
 
-    <header class="main-header" style="background-color: #85C1E9; padding: 10px; text-align: center;">
-        <h1 style="margin:0; font-size: 20px;">🎯 Daily Shillong Morning Teer</h1>
+    <header class="main-header" style="background-color: #85C1E9; padding: 15px; text-align: center; border-bottom: 2px solid #2c3e50;">
+        <h1 style="margin:0; font-size: 22px; color: #2c3e50;">🎯 Daily Shillong Morning Teer</h1>
     </header>
 
     <div class="main-container">
-        <section class="results-section">
-            <div id="res-date" style="font-weight:bold; padding:10px;">--/--/----</div>
-            <table class="result-table">
-                <thead><tr><th colspan="2">SHILLONG MORNING</th></tr></thead>
-                <tbody>
-                    <tr class="round-names">
-                        <td id="fr-time-label">F/R (10:33 AM)</td>
-                        <td id="sr-time-label">S/R (11:33 AM)</td>
+        
+        <section class="results-section" style="text-align: center; margin-top: 10px;">
+            <div id="res-date" class="date-display" style="font-weight: bold; padding: 10px; font-size: 18px;">--/--/----</div>
+            <table class="result-table" style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <thead>
+                    <tr style="background: #34495e; color: white;">
+                        <th colspan="2" style="padding: 12px;">SHILLONG MORNING</th>
                     </tr>
-                    <tr class="round-numbers">
-                        <td id="fr-val">--</td>
-                        <td id="sr-val">--</td>
+                </thead>
+                <tbody>
+                    <tr class="round-names" style="background: #4ed9c1; font-weight: bold; font-size: 13px;">
+                        <td id="fr-time-label" style="padding: 10px; border: 1px solid #ddd;">F/R (10:33 AM)</td>
+                        <td id="sr-time-label" style="padding: 10px; border: 1px solid #ddd;">S/R (11:33 AM)</td>
+                    </tr>
+                    <tr class="round-numbers" style="font-size: 36px; font-weight: bold;">
+                        <td id="fr-val" style="padding: 25px 0; border: 1px solid #ddd; color: #2c3e50;">--</td>
+                        <td id="sr-val" style="padding: 25px 0; border: 1px solid #ddd; color: #2c3e50;">--</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <div class="card-grid">
-            <div class="card card-orange" onclick="location.href='common.html'"><span>Ⓒ</span><p>Common Number</p></div>
-            <div class="card card-white"><strong>D E A L</strong></div>
-            <div class="card card-orange" onclick="location.href='dream.html'"><span>👤</span><p>Dream Number</p></div>
+        <div class="card-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;">
+            <div class="card card-orange" onclick="location.href='/common.html'">
+                <span class="icon">Ⓒ</span><p>Common Number</p>
+            </div>
+            <div class="card card-white">
+                <div class="deal-text"><strong>D E A L</strong></div>
+            </div>
+            <div class="card card-orange" onclick="location.href='/dream.html'">
+                <span class="icon">👤</span><p>Dream Number</p>
+            </div>
 
-            <div class="card card-dark-teal" onclick="location.href='analytics.html'"><span>📊</span><p>Analytics</p></div>
-            <div class="card card-brown" onclick="location.href='target.html'"><span>🏹</span><p>Predict Target</p></div>
-            <div class="card card-teal" onclick="location.href='previous-results.html'"><span>🎯</span><p>Previous Result</p></div>
+            <div class="card card-dark-teal" onclick="location.href='/analytics.html'">
+                <span class="icon">📊</span><p>Analytics</p>
+            </div>
+            <div class="card card-brown" onclick="location.href='/target.html'">
+                <span class="icon">🏹</span><p>Predict Target</p>
+            </div>
+            <div class="card card-teal" onclick="location.href='/previous-results.html'">
+                <span class="icon">🎯</span><p>Previous Result</p>
+            </div>
 
-            <div class="card card-light-teal" onclick="location.href='calendar.html'"><span>📅</span><p>Teer Calendar</p></div>
-            <div class="card card-white-border" onclick="location.href='counter.html'"><span>🎯</span><p style="color:#a52a2a">Reputed Counter</p></div>
-            <div class="card card-pink" onclick="location.href='target.html'"><span>🏹</span><p>Target App</p></div>
-        </div>
-
-        <div class="footer-strip">
-            <a href="#">Download our Teer Android App - OTP NOT REQUIRED. Available in All Countries.</a>
-            <div class="footer-links">
-                <a href="terms.html">Terms</a> | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a>
+            <div class="card card-light-teal" onclick="location.href='/calendar.html'">
+                <span class="icon">📅</span><p>Teer Calendar</p>
+            </div>
+            <div class="card card-white-border" onclick="location.href='/counter.html'">
+                <span class="icon">🎯</span><p style="color:#a52a2a">Reputed Counter</p>
+            </div>
+            <div class="card card-pink" onclick="location.href='/target.html'">
+                <span class="icon">🏹</span><p>Target App</p>
             </div>
         </div>
+
+        <div class="footer-strip" style="background-color: #e0e0e0; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px;">
+            <a href="#" style="color: #0000EE; text-decoration: underline; font-weight: bold; font-size: 14px; display: block; margin-bottom: 10px;">
+                Download our Teer Android App - OTP NOT REQUIRED. Available in All Countries.
+            </a>
+            <div class="footer-links" style="font-size: 13px;">
+                <a href="/terms.html" style="color: blue; text-decoration: none;">Terms</a> | 
+                <a href="/contact.html" style="color: blue; text-decoration: none;">Contact Us</a> | 
+                <a href="/privacy.html" style="color: blue; text-decoration: none;">Privacy Policy</a>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
