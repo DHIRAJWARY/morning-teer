@@ -3,76 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | Morning Teer</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Admin Panel | Teer Results</title>
     <style>
-        body { background: #f4f7f6; padding: 20px; font-family: sans-serif; }
-        .admin-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; }
-        .admin-box h3 { color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        label { display: block; margin: 10px 0 5px; font-weight: bold; font-size: 14px; }
-        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; transition: 0.3s; }
-        .btn-blue { background: #3498db; }
-        .btn-teal { background: #31b1b9; margin-top: 10px; }
-        .flex-row { display: flex; gap: 10px; }
-        #historyGenerator { background: #fff3cd; padding: 15px; border-radius: 6px; margin-top: 20px; display: none; }
-        #copyBox { font-family: monospace; font-size: 12px; background: white; cursor: pointer; }
+        body { font-family: Arial, sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .admin-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { color: #2c3e50; text-align: center; }
+        input, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
+        button { background: #3498db; color: white; border: none; font-weight: bold; cursor: pointer; }
+        button:hover { background: #2980b9; }
+        .hidden { display: none; }
+        .copy-area { background: #fff3cd; padding: 15px; border: 1px dashed #856404; margin-top: 20px; border-radius: 8px; }
+        textarea { width: 100%; height: 120px; font-family: monospace; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <div id="login-gate" class="admin-box">
-        <h3>Admin Access</h3>
-        <input type="password" id="passInput" placeholder="Enter Password">
-        <button class="btn btn-blue" onclick="checkPassword()">Login</button>
-    </div>
+    <div class="admin-box">
+        <div id="login-gate">
+            <h2>Admin Login</h2>
+            <input type="password" id="passInput" placeholder="Enter Secret Password">
+            <button onclick="checkPassword()">Login</button>
+        </div>
 
-    <div id="management-panel" style="display:none;">
-        <div class="admin-box">
-            <h3>Update Live Results</h3>
-            <label>Date (DD/MM/YYYY):</label>
-            <input type="text" id="resDate" placeholder="e.g., 24/02/2026">
+        <div id="management-panel" class="hidden">
+            <h2>Update Results</h2>
+            <label>F/R Number:</label>
+            <input type="text" id="frNum" placeholder="Example: 42">
             
-            <div class="flex-row">
-                <div style="flex:1;">
-                    <label>F/R Time:</label>
-                    <input type="text" id="frTime" value="10:30 AM">
-                    <label>F/R Result:</label>
-                    <input type="text" id="frNum" placeholder="--">
-                </div>
-                <div style="flex:1;">
-                    <label>S/R Time:</label>
-                    <input type="text" id="srTime" value="11:30 AM">
-                    <label>S/R Result:</label>
-                    <input type="text" id="srNum" placeholder="--">
+            <label>S/R Number:</label>
+            <input type="text" id="srNum" placeholder="Example: 38">
+            
+            <button style="background: #27ae60;" onclick="saveData()">PUBLISH LIVE RESULT</button>
+
+            <div id="historyGenerator" class="hidden">
+                <div class="copy-area">
+                    <p style="font-size: 12px; font-weight: bold; margin: 0 0 10px;">COPY THESE CODES TO GITHUB:</p>
+                    <textarea id="copyBox" readonly></textarea>
+                    <p style="font-size: 11px; color: #856404;">1. Paste JSON in results.json<br>2. Paste Row in previous-results.html</p>
                 </div>
             </div>
             
-            <button class="btn btn-blue" onclick="saveData()">PUBLISH LIVE RESULT</button>
-
-            <div id="historyGenerator">
-                <p style="margin:0 0 10px 0; font-size:12px;"><strong>Step 2:</strong> Copy this code for your GitHub History:</p>
-                <input type="text" id="copyBox" readonly onclick="this.select()">
-            </div>
-
-            <h3 style="margin-top: 40px;">Update Common Numbers</h3>
-            <p style="font-size: 11px; color: #e74c3c;">These numbers auto-reset at midnight.</p>
-            
-            <label>Set 1 (Direct | House | Ending):</label>
-            <div class="flex-row">
-                <input type="text" id="in-d1" placeholder="35, 68">
-                <input type="text" id="in-h1" placeholder="4">
-                <input type="text" id="in-e1" placeholder="3">
-            </div>
-
-            <label>Set 2 (Direct | House | Ending):</label>
-            <div class="flex-row">
-                <input type="text" id="in-d2" placeholder="72, 50">
-                <input type="text" id="in-h2" placeholder="8">
-                <input type="text" id="in-e2" placeholder="3">
-            </div>
-
-            <button class="btn btn-teal" onclick="saveCommonNumbers()">UPDATE COMMON NUMBERS</button>
+            <hr>
+            <button onclick="location.reload()" style="background:#95a5a6;">Logout</button>
         </div>
     </div>
 
