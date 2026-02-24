@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header class="main-header">
         <div class="logo-area">
             <span class="logo-icon">🎯</span>
             <h1>Morning Teer</h1>
         </div>
     </header>
-    
+
     <div class="main-container">
+        
         <section class="results-section">
             <div class="date-display" id="res-date">24/02/2026</div>
             <table class="result-table">
@@ -27,8 +29,8 @@
                         <td id="sr-time-label">S/R (11:30 AM)</td>
                     </tr>
                     <tr class="round-numbers">
-                        <td id="fr-val">42</td> 
-                        <td id="sr-val">--</td> 
+                        <td id="fr-val">--</td>
+                        <td id="sr-val">--</td>
                     </tr>
                 </tbody>
             </table>
@@ -51,25 +53,30 @@
         </div>
 
         <div class="card-grid">
-            <div class="card card-dark-blue" onclick="window.location.href='analytics.html'" style="cursor: pointer;"><div class="icon-img">📊</div><p>Analytics</p></div>
-            <div class="card card-brown" onclick="window.location.href='target.html'" style="cursor: pointer;"><div class="icon-img">🏹</div><p>Predict Target</p></div>
-            
+            <div class="card card-dark-blue" onclick="window.location.href='analytics.html'" style="cursor: pointer;">
+                <div class="icon-img">📊</div>
+                <p>Analytics</p>
+            </div>
+            <div class="card card-brown" onclick="window.location.href='target.html'" style="cursor: pointer;">
+                <div class="icon-img">🏹</div>
+                <p>Predict Target</p>
+            </div>
             <div class="card card-teal" onclick="window.location.href='previous-results.html'" style="cursor: pointer;">
-                <div class="big-icon">🎯</div>
+                <div class="icon-img">🎯</div>
                 <p>Previous Result</p>
             </div>
         </div>
 
         <div class="card-grid">
-            <div class="card" onclick="window.location.href='calendar.html'" style="cursor: pointer; background-color: #31b1b9;">
+            <div class="card card-calendar" onclick="window.location.href='calendar.html'" style="cursor: pointer; background-color: #31b1b9;">
                 <div class="big-icon">📅</div>
                 <p>Teer Calendar</p>
             </div>
-            <div class="card" onclick="window.location.href='counter.html'" style="cursor: pointer; background-color: #ffffff; border: 1px solid #ddd;">
+            <div class="card card-counter" onclick="window.location.href='counter.html'" style="cursor: pointer; background-color: #ffffff; border: 1px solid #ddd;">
                 <div class="big-icon">🎯</div>
                 <p style="color: #a52a2a; font-weight: bold;">Reputed Counter</p>
             </div>
-            <div class="card" onclick="window.location.href='target-app.html'" style="cursor: pointer; background-color: #e91e63;">
+            <div class="card card-target" onclick="window.location.href='target.html'" style="cursor: pointer; background-color: #e91e63;">
                 <div class="big-icon">🏹</div>
                 <p style="color: white;">Target App</p>
             </div>
@@ -79,6 +86,7 @@
             <a href="admin/index.html" style="color: #ccc; text-decoration: none; font-size: 10px;">Admin Login</a>
         </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
