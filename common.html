@@ -3,63 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morning Teer | Common Numbers</title>
+    <title>Common Numbers | Daily Shillong Morning Teer</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .common-container { padding: 20px; text-align: center; }
-        .date-header { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
-        .title-header { font-size: 22px; margin-bottom: 20px; }
-        .common-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; border: 2px solid #31b1b9; }
-        .common-table th { background-color: #4ed9c1; color: black; padding: 12px; border: 1px solid #000; font-size: 18px; }
-        .common-table td { padding: 15px; border: 1px solid #000; font-size: 20px; font-weight: bold; background: white; }
-        
-        /* Disclaimer & Footer Styles */
-        .disclaimer-area { margin-top: 40px; text-align: center; font-size: 14px; color: #333; }
-        .footer-strip { background-color: #e0e0e0; padding: 15px; margin-top: 20px; border-radius: 4px; }
-        .footer-links { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
-        .footer-links a { color: blue; text-decoration: underline; font-size: 13px; }
+        .common-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid #000; }
+        .common-table th { background-color: #4ed9c1; color: black; padding: 10px; border: 1px solid #000; font-size: 18px; }
+        .common-table td { padding: 12px; border: 1px solid #000; font-size: 18px; background: white; }
+        .disclaimer-box { margin-top: 30px; font-size: 13px; color: #333; line-height: 1.6; }
+        .footer-strip { background-color: #D3D3D3; padding: 10px; margin-top: 20px; font-size: 12px; }
     </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo-area">
-            <a href="index.html" style="text-decoration:none; font-size:24px; margin-right:15px; color:#000;">⬅️</a>
-            <h1>Common Number</h1>
+    <header class="main-header" style="background-color: #85C1E9; padding: 10px; text-align: center;">
+        <div class="logo-area" style="display: flex; align-items: center; justify-content: center;">
+            <a href="index.html" style="text-decoration:none; font-size:20px; margin-right:15px; color:#000;">⬅️</a>
+            <h1 style="margin: 0; font-size: 20px;">Daily Shillong Morning Teer</h1>
         </div>
     </header>
 
     <div class="main-container common-container">
-        <div class="date-header" id="common-date">24/02/2026</div>
-        <div class="title-header">Common Number</div>
+        <div id="common-date" style="font-weight: bold; margin-bottom: 5px;">24/02/2026</div>
+        <div style="font-size: 20px; margin-bottom: 15px;">Common Number</div>
 
         <table class="common-table">
-            <thead>
-                <tr><th>Direct</th><th>House</th><th>Ending</th></tr>
-            </thead>
-            <tbody>
-                <tr><td id="d1">--</td><td id="h1">--</td><td id="e1">--</td></tr>
-            </tbody>
+            <thead><tr><th>Direct</th><th>House</th><th>Ending</th></tr></thead>
+            <tbody><tr><td id="d1">35, 68</td><td id="h1">4</td><td id="e1">3</td></tr></tbody>
         </table>
 
         <table class="common-table">
-            <thead>
-                <tr><th>Direct</th><th>House</th><th>Ending</th></tr>
-            </thead>
-            <tbody>
-                <tr><td id="d2">--</td><td id="h2">--</td><td id="e2">--</td></tr>
-            </tbody>
+            <thead><tr><th>Direct</th><th>House</th><th>Ending</th></tr></thead>
+            <tbody><tr><td id="d2">72, 50</td><td id="h2">8</td><td id="e2">3</td></tr></tbody>
         </table>
 
-        <div class="disclaimer-area">
+        <div class="disclaimer-box">
             <p>Disclaimer: Daily Morning Teer common numbers are purely based on certain calculations done using past results. There is no guarantee of the accuracy of these numbers.</p>
-            <p style="font-weight: bold; margin-top: 10px;">Note: There is no making number in Teer</p>
+            <p style="font-weight: bold;">Note: There is no making number in Teer</p>
             
             <div class="footer-strip">
-                <a href="#" style="display: block; margin-bottom: 5px; color: blue;">Download our Teer Android App - OTP NOT REQUIRED. Available in All Countries.</a>
-                <div class="footer-links">
-                    <a href="terms.html">Terms</a>
-                    <a href="contact.html">Contact Us</a>
-                    <a href="privacy.html">Privacy Policy</a>
+                <a href="#" style="color: blue; text-decoration: underline;">Download our Teer Android App - OTP NOT REQUIRED. Available in All Countries.</a>
+                <div style="margin-top: 8px;">
+                    <a href="terms.html" style="margin: 0 10px; color: blue;">Terms</a>
+                    <a href="contact.html" style="margin: 0 10px; color: blue;">Contact Us</a>
+                    <a href="privacy.html" style="margin: 0 10px; color: blue;">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -71,20 +57,13 @@
             if (saved) {
                 const data = JSON.parse(saved);
                 const today = new Date().toLocaleDateString('en-GB'); 
-
-                // Midnight Reset Logic: Clear if date is not today
                 if (data.date !== today) {
                     localStorage.removeItem('commonNumbers');
                     return;
                 }
-
                 document.getElementById('common-date').innerText = data.date;
-                document.getElementById('d1').innerText = data.d1;
-                document.getElementById('h1').innerText = data.h1;
-                document.getElementById('e1').innerText = data.e1;
-                document.getElementById('d2').innerText = data.d2;
-                document.getElementById('h2').innerText = data.h2;
-                document.getElementById('e2').innerText = data.e2;
+                document.getElementById('d1').innerText = data.d1; document.getElementById('h1').innerText = data.h1; document.getElementById('e1').innerText = data.e1;
+                document.getElementById('d2').innerText = data.d2; document.getElementById('h2').innerText = data.h2; document.getElementById('e2').innerText = data.e2;
             }
         });
     </script>
