@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Teer | Common Numbers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .common-container { padding: 20px; text-align: center; }
+        .date-header { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
+        .title-header { font-size: 22px; margin-bottom: 20px; }
+        .common-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; border: 2px solid #31b1b9; }
+        .common-table th { background-color: #4ed9c1; color: black; padding: 12px; border: 1px solid #000; font-size: 18px; }
+        .common-table td { padding: 15px; border: 1px solid #000; font-size: 20px; font-weight: bold; background: white; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html" style="text-decoration:none; font-size:24px; margin-right:15px; color:#000;">⬅️</a>
+            <h1>Common Number</h1>
+        </div>
+    </header>
+
+    <div class="main-container common-container">
+        <div class="date-header" id="common-date">--/--/----</div>
+        <div class="title-header">Common Number</div>
+
+        <table class="common-table">
+            <thead>
+                <tr><th>Direct</th><th>House</th><th>Ending</th></tr>
+            </thead>
+            <tbody>
+                <tr><td id="d1">--</td><td id="h1">--</td><td id="e1">--</td></tr>
+            </tbody>
+        </table>
+
+        <table class="common-table">
+            <thead>
+                <tr><th>Direct</th><th>House</th><th>Ending</th></tr>
+            </thead>
+            <tbody>
+                <tr><td id="d2">--</td><td id="h2">--</td><td id="e2">--</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('commonNumbers');
+            if (saved) {
+                const data = JSON.parse(saved);
+                const today = new Date().toLocaleDateString('en-GB'); // DD/MM/YYYY
+
+                // Midnight Reset: Remove if date doesn't match today
+                if (data.date !== today) {
+                    localStorage.removeItem('commonNumbers');
+                    return;
+                }
+
+                document.getElementById('common-date').innerText = data.date;
+                document.getElementById('d1').innerText = data.d1;
+                document.getElementById('h1').innerText = data.h1;
+                document.getElementById('e1').innerText = data.e1;
+                document.getElementById('d2').innerText = data.d2;
+                document.getElementById('h2').innerText = data.h2;
+                document.getElementById('e2').innerText = data.e2;
+            }
+        });
+    </script>
+</body>
+</html>
