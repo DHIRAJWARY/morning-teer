@@ -1,39 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // The leading slash ensures it works perfectly on custom domains
-    const jsonUrl = '/results.json';
-
-    function updateUI(data) {
-        // Find elements
-        const resDate = document.getElementById('res-date');
-        const frVal = document.getElementById('fr-val');
-        const srVal = document.getElementById('sr-val');
-        const frLabel = document.getElementById('fr-time-label');
-        const srLabel = document.getElementById('sr-time-label');
-
-        // Apply data
-        if (resDate) resDate.innerText = data.date;
-        if (frVal) frVal.innerText = data.fr;
-        if (srVal) srVal.innerText = data.sr;
-        
-        // Force the official times you requested
-        if (frLabel) frLabel.innerText = `F/R (10:33 AM)`;
-        if (srLabel) srLabel.innerText = `S/R (11:33 AM)`;
-    }
-
-    // Fetch from the custom domain root with a cache-buster
-    fetch(jsonUrl + '?nocache=' + new Date().getTime())
-        .then(response => {
-            if (!response.ok) throw new Error('Update file not found');
-            return response.json();
-        })
+    fetch('/results.json?nocache=' + new Date().getTime())
+        .then(response => response.json())
         .then(data => {
-            updateUI(data);
-            console.log("Global update successful");
+            // Update Results
+            document.getElementById('res-date').innerText = data.date;
+            document.getElementById('fr-val').innerText = data.fr;
+            document.getElementById('sr-val').innerText = data.sr;
+
+            // Update Target/Common if elements exist on the page
+            const houseEl = document.getElementById('house-display');
+            const endingEl = document.getElementById('ending-display');
+            const commonEl = document.getElementById('common-display');
+
+            if(houseEl) houseEl.innerText = data.house;
+            if(endingEl) endingEl.innerText = data.ending;
+            if(commonEl) commonEl.innerText = data.common;
         })
-        .catch(err => {
-            console.warn("Could not sync globally, checking local backup...");
-            // Fallback for the admin/publisher
-            const localData = localStorage.getItem('teerResult');
-            if (localData) updateUI(JSON.parse(localData));
-        });
+        .catch(err => console.log("Fetch error or file not ready yet."));
 });
