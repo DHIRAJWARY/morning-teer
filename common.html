@@ -3,69 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Common Numbers | Daily Shillong Morning Teer</title>
+    <title>Common Numbers - Shillong Teer</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
     <link rel="stylesheet" href="style.css">
-    <style>
-        .common-container { padding: 20px; text-align: center; }
-        .common-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid #000; }
-        .common-table th { background-color: #4ed9c1; color: black; padding: 10px; border: 1px solid #000; font-size: 18px; }
-        .common-table td { padding: 12px; border: 1px solid #000; font-size: 18px; background: white; }
-        .disclaimer-box { margin-top: 30px; font-size: 13px; color: #333; line-height: 1.6; }
-        .footer-strip { background-color: #D3D3D3; padding: 10px; margin-top: 20px; font-size: 12px; }
-    </style>
 </head>
-<body>
-    <header class="main-header" style="background-color: #85C1E9; padding: 10px; text-align: center;">
-        <div class="logo-area" style="display: flex; align-items: center; justify-content: center;">
-            <a href="index.html" style="text-decoration:none; font-size:20px; margin-right:15px; color:#000;">⬅️</a>
-            <h1 style="margin: 0; font-size: 20px;">Daily Shillong Morning Teer</h1>
-        </div>
+<body style="background-color: #f4f4f4;">
+
+    <header style="background-color: #e67e22; padding: 15px; text-align: center; color: white;">
+        <h1 style="margin:0; font-size: 20px;">Ⓒ Common Numbers</h1>
     </header>
 
-    <div class="main-container common-container">
-        <div id="common-date" style="font-weight: bold; margin-bottom: 5px;">24/02/2026</div>
-        <div style="font-size: 20px; margin-bottom: 15px;">Common Number</div>
+    <div class="main-container" style="padding: 20px; text-align: center;">
+        
+        <div id="res-date" style="margin-bottom: 15px; font-weight: bold;">--/--/----</div>
 
-        <table class="common-table">
-            <thead><tr><th>Direct</th><th>House</th><th>Ending</th></tr></thead>
-            <tbody><tr><td id="d1">35, 68</td><td id="h1">4</td><td id="e1">3</td></tr></tbody>
+        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <thead>
+                <tr style="background: #34495e; color: white;">
+                    <th style="padding: 12px; border: 1px solid #ddd;">HOUSE</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">ENDING</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 30px; font-weight: bold; color: #2c3e50;">
+                    <td id="house-display" style="padding: 20px; border: 1px solid #ddd;">--</td>
+                    <td id="ending-display" style="padding: 20px; border: 1px solid #ddd;">--</td>
+                </tr>
+            </tbody>
         </table>
 
-        <table class="common-table">
-            <thead><tr><th>Direct</th><th>House</th><th>Ending</th></tr></thead>
-            <tbody><tr><td id="d2">72, 50</td><td id="h2">8</td><td id="e2">3</td></tr></tbody>
-        </table>
-
-        <div class="disclaimer-box">
-            <p>Disclaimer: Daily Morning Teer common numbers are purely based on certain calculations done using past results. There is no guarantee of the accuracy of these numbers.</p>
-            <p style="font-weight: bold;">Note: There is no making number in Teer</p>
-            
-            <div class="footer-strip">
-                <a href="#" style="color: blue; text-decoration: underline;">Download our Teer Android App - OTP NOT REQUIRED. Available in All Countries.</a>
-                <div style="margin-top: 8px;">
-                    <a href="terms.html" style="margin: 0 10px; color: blue;">Terms</a>
-                    <a href="contact.html" style="margin: 0 10px; color: blue;">Contact Us</a>
-                    <a href="privacy.html" style="margin: 0 10px; color: blue;">Privacy Policy</a>
-                </div>
-            </div>
+        <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <p style="margin: 0; color: #7f8c8d; font-weight: bold;">DIRECT COMMON NUMBER</p>
+            <div id="common-display" style="font-size: 40px; font-weight: bold; color: #e67e22; margin-top: 10px;">--</div>
         </div>
+
+        <button onclick="window.history.back()" style="margin-top: 30px; padding: 10px 20px; background: #34495e; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            ← Go Back
+        </button>
+
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const saved = localStorage.getItem('commonNumbers');
-            if (saved) {
-                const data = JSON.parse(saved);
-                const today = new Date().toLocaleDateString('en-GB'); 
-                if (data.date !== today) {
-                    localStorage.removeItem('commonNumbers');
-                    return;
-                }
-                document.getElementById('common-date').innerText = data.date;
-                document.getElementById('d1').innerText = data.d1; document.getElementById('h1').innerText = data.h1; document.getElementById('e1').innerText = data.e1;
-                document.getElementById('d2').innerText = data.d2; document.getElementById('h2').innerText = data.h2; document.getElementById('e2').innerText = data.e2;
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
