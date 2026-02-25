@@ -7,19 +7,21 @@ const firebaseConfig = {
     messagingSenderId: "849245400322",
     appId: "1:849245400322:web:c404167e678158e92b261b",
     measurementId: "G-FRYNDCH59K",
-    databaseURL: "https://teer-ac8f5-default-rtdb.firebaseio.com"
+    // FIXED: Now pointing to your Singapore server
+    databaseURL: "https://teer-ac8f5-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
 // 2. INITIALIZE FIREBASE
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// 3. THE LIVE LISTENER (Replaces your old 'fetch' code)
+// 3. THE LIVE LISTENER
 database.ref('liveResult').on('value', (snapshot) => {
     const data = snapshot.val();
     
     if (data) {
-        // Update Main Results
+        console.log("Data found!", data);
+        
         if(document.getElementById('res-date')) 
             document.getElementById('res-date').innerText = data.date || "--/--/----";
         
@@ -29,7 +31,7 @@ database.ref('liveResult').on('value', (snapshot) => {
         if(document.getElementById('sr-val')) 
             document.getElementById('sr-val').innerText = data.sr || "--";
 
-        // Update Target/Common Numbers (House, Ending, Common)
+        // Update Target/Common Numbers
         const houseEl = document.getElementById('house-display');
         const endingEl = document.getElementById('ending-display');
         const commonEl = document.getElementById('common-display');
@@ -38,8 +40,10 @@ database.ref('liveResult').on('value', (snapshot) => {
         if(endingEl) endingEl.innerText = data.ending || "--";
         if(commonEl) commonEl.innerText = data.common || "--";
 
-        console.log("⚡ Live Update: Results Synced from Firebase.");
+        console.log("⚡ Success: Website updated with Singapore Data.");
+    } else {
+        console.log("Connected to Singapore, but 'liveResult' folder is missing or empty.");
     }
 }, (error) => {
-    console.error("Firebase Error:", error);
+    console.error("Firebase Connection Error:", error);
 });
