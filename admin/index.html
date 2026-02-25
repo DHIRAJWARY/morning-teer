@@ -3,51 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel | Teer Results</title>
+    <title>Full Admin Panel</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        body { font-family: Arial, sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-        .admin-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        h2 { color: #2c3e50; text-align: center; }
-        input, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
-        button { background: #3498db; color: white; border: none; font-weight: bold; cursor: pointer; }
-        button:hover { background: #2980b9; }
-        .hidden { display: none; }
-        .copy-area { background: #fff3cd; padding: 15px; border: 1px dashed #856404; margin-top: 20px; border-radius: 8px; }
-        textarea { width: 100%; height: 120px; font-family: monospace; font-size: 12px; }
+        body { padding: 20px; background: #f0f2f5; }
+        .admin-card { background: white; padding: 20px; border-radius: 15px; max-width: 500px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .section-title { font-weight: bold; margin-top: 15px; color: #2c3e50; border-bottom: 2px solid #85C1E9; }
+        button { width: 100%; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        #copyBox { background: #fff3cd; font-family: monospace; height: 150px; }
     </style>
 </head>
 <body>
 
-    <div class="admin-box">
-        <div id="login-gate">
-            <h2>Admin Login</h2>
-            <input type="password" id="passInput" placeholder="Enter Secret Password">
-            <button onclick="checkPassword()">Login</button>
-        </div>
-
-        <div id="management-panel" class="hidden">
-            <h2>Update Results</h2>
-            <label>F/R Number:</label>
-            <input type="text" id="frNum" placeholder="Example: 42">
-            
-            <label>S/R Number:</label>
-            <input type="text" id="srNum" placeholder="Example: 38">
-            
-            <button style="background: #27ae60;" onclick="saveData()">PUBLISH LIVE RESULT</button>
-
-            <div id="historyGenerator" class="hidden">
-                <div class="copy-area">
-                    <p style="font-size: 12px; font-weight: bold; margin: 0 0 10px;">COPY THESE CODES TO GITHUB:</p>
-                    <textarea id="copyBox" readonly></textarea>
-                    <p style="font-size: 11px; color: #856404;">1. Paste JSON in results.json<br>2. Paste Row in previous-results.html</p>
-                </div>
-            </div>
-            
-            <hr>
-            <button onclick="location.reload()" style="background:#95a5a6;">Logout</button>
-        </div>
+<div class="admin-card">
+    <div id="login-gate">
+        <h2>Admin Login</h2>
+        <input type="password" id="passInput" placeholder="Password">
+        <button onclick="checkPassword()" style="background:#34495e;">Login</button>
     </div>
 
-    <script src="admin.js"></script>
+    <div id="management-panel" style="display:none;">
+        <h2>Global Update Panel</h2>
+        
+        <p class="section-title">Step 1: Date & Results</p>
+        <input type="text" id="resDate" placeholder="Date (e.g., 25/02/2026)">
+        <input type="text" id="frNum" placeholder="F/R Number">
+        <input type="text" id="srNum" placeholder="S/R Number">
+
+        <p class="section-title">Step 2: Common Numbers & Target</p>
+        <div style="display:flex; gap:10px;">
+            <input type="text" id="house" placeholder="House">
+            <input type="text" id="ending" placeholder="Ending">
+        </div>
+        <input type="text" id="commonNumbers" placeholder="Common Numbers (e.g., 12, 45, 67)">
+
+        <button onclick="generateEverything()">GENERATE GLOBAL UPDATE</button>
+
+        <div id="output-area" style="display:none; margin-top:20px;">
+            <p style="font-size:12px; color:red;">Copy and Paste this into <strong>results.json</strong> on GitHub:</p>
+            <textarea id="copyBox" readonly></textarea>
+        </div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
 </body>
 </html>
