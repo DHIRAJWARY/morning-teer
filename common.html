@@ -4,46 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Common Numbers - Shillong Teer</title>
-    
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #f4f4f4;">
+<body style="background-color: #f4f4f4; font-family: Arial, sans-serif;">
 
     <header style="background-color: #e67e22; padding: 15px; text-align: center; color: white;">
         <h1 style="margin:0; font-size: 20px;">Ⓒ Common Numbers</h1>
     </header>
 
-    <div class="main-container" style="padding: 20px; text-align: center;">
+    <div class="main-container" style="padding: 15px; max-width: 500px; margin: auto;">
         
-        <div id="res-date" style="margin-bottom: 15px; font-weight: bold;">--/--/----</div>
+        <div id="res-date" style="text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 18px;">--/--/----</div>
 
-        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <thead>
-                <tr style="background: #34495e; color: white;">
-                    <th style="padding: 12px; border: 1px solid #ddd;">HOUSE</th>
-                    <th style="padding: 12px; border: 1px solid #ddd;">ENDING</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="font-size: 30px; font-weight: bold; color: #2c3e50;">
-                    <td id="house-display" style="padding: 20px; border: 1px solid #ddd;">--</td>
-                    <td id="ending-display" style="padding: 20px; border: 1px solid #ddd;">--</td>
-                </tr>
-            </tbody>
+        <h3 style="color: #2c3e50; border-left: 5px solid #e67e22; padding-left: 10px;">First Round (FR)</h3>
+        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 25px; text-align: center;">
+            <tr style="background: #34495e; color: white; font-size: 12px;">
+                <th style="padding: 10px;">HOUSE</th>
+                <th style="padding: 10px;">ENDING</th>
+                <th style="padding: 10px;">DIRECT</th>
+            </tr>
+            <tr style="font-size: 22px; font-weight: bold; color: #2c3e50;">
+                <td id="fr-house" style="padding: 15px; border: 1px solid #ddd;">--</td>
+                <td id="fr-ending" style="padding: 15px; border: 1px solid #ddd;">--</td>
+                <td id="fr-common" style="padding: 15px; border: 1px solid #ddd; color: #e67e22;">--</td>
+            </tr>
         </table>
 
-        <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <p style="margin: 0; color: #7f8c8d; font-weight: bold;">DIRECT COMMON NUMBER</p>
-            <div id="common-display" style="font-size: 40px; font-weight: bold; color: #e67e22; margin-top: 10px;">--</div>
+        <h3 style="color: #2c3e50; border-left: 5px solid #27ae60; padding-left: 10px;">Second Round (SR)</h3>
+        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+            <tr style="background: #34495e; color: white; font-size: 12px;">
+                <th style="padding: 10px;">HOUSE</th>
+                <th style="padding: 10px;">ENDING</th>
+                <th style="padding: 10px;">DIRECT</th>
+            </tr>
+            <tr style="font-size: 22px; font-weight: bold; color: #2c3e50;">
+                <td id="sr-house" style="padding: 15px; border: 1px solid #ddd;">--</td>
+                <td id="sr-ending" style="padding: 15px; border: 1px solid #ddd;">--</td>
+                <td id="sr-common" style="padding: 15px; border: 1px solid #ddd; color: #27ae60;">--</td>
+            </tr>
+        </table>
+
+        <div style="text-align: center;">
+            <button onclick="window.history.back()" style="margin-top: 30px; padding: 12px 30px; background: #34495e; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                ← Back to Home
+            </button>
         </div>
-
-        <button onclick="window.history.back()" style="margin-top: 30px; padding: 10px 20px; background: #34495e; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            ← Go Back
-        </button>
-
     </div>
 
     <script src="script.js"></script>
