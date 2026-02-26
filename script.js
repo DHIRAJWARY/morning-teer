@@ -7,12 +7,13 @@ const firebaseConfig = {
     messagingSenderId: "849245400322",
     appId: "1:849245400322:web:c404167e678158e92b261b",
     measurementId: "G-FRYNDCH59K",
-    // FIXED: Now pointing to your Singapore server
     databaseURL: "https://teer-ac8f5-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
 // 2. INITIALIZE FIREBASE
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
 const database = firebase.database();
 
 // 3. THE LIVE LISTENER
@@ -20,8 +21,9 @@ database.ref('liveResult').on('value', (snapshot) => {
     const data = snapshot.val();
     
     if (data) {
-        console.log("Data found!", data);
+        console.log("⚡ Data received from Singapore:", data);
         
+        // --- MAIN PAGE RESULTS ---
         if(document.getElementById('res-date')) 
             document.getElementById('res-date').innerText = data.date || "--/--/----";
         
@@ -31,18 +33,28 @@ database.ref('liveResult').on('value', (snapshot) => {
         if(document.getElementById('sr-val')) 
             document.getElementById('sr-val').innerText = data.sr || "--";
 
-        // Update Target/Common Numbers
-        const houseEl = document.getElementById('house-display');
-        const endingEl = document.getElementById('ending-display');
-        const commonEl = document.getElementById('common-display');
+        // --- COMMON NUMBERS PAGE (FR) ---
+        if(document.getElementById('fr-house')) 
+            document.getElementById('fr-house').innerText = data.fr_house || "--";
+        
+        if(document.getElementById('fr-ending')) 
+            document.getElementById('fr-ending').innerText = data.fr_ending || "--";
+        
+        if(document.getElementById('fr-common')) 
+            document.getElementById('fr-common').innerText = data.fr_common || "--";
 
-        if(houseEl) houseEl.innerText = data.house || "--";
-        if(endingEl) endingEl.innerText = data.ending || "--";
-        if(commonEl) commonEl.innerText = data.common || "--";
+        // --- COMMON NUMBERS PAGE (SR) ---
+        if(document.getElementById('sr-house')) 
+            document.getElementById('sr-house').innerText = data.sr_house || "--";
+        
+        if(document.getElementById('sr-ending')) 
+            document.getElementById('sr-ending').innerText = data.sr_ending || "--";
+        
+        if(document.getElementById('sr-common')) 
+            document.getElementById('sr-common').innerText = data.sr_common || "--";
 
-        console.log("⚡ Success: Website updated with Singapore Data.");
     } else {
-        console.log("Connected to Singapore, but 'liveResult' folder is missing or empty.");
+        console.log("Connected, but no data found in 'liveResult'.");
     }
 }, (error) => {
     console.error("Firebase Connection Error:", error);
