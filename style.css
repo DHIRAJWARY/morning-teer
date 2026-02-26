@@ -88,13 +88,13 @@ body {
 /* 3x3 GRID SYSTEM */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Forces exactly 3 columns */
-    gap: 8px; /* Spacing between cards */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 4px; /* Tighter spacing for small icons */
     margin-top: 15px;
 }
 
 .card {
-    aspect-ratio: 1 / 1; /* Makes cards perfect squares */
+    aspect-ratio: 1 / 1; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,24 +108,24 @@ body {
 }
 
 .card:active {
-    transform: scale(0.95); /* Click feedback effect */
+    transform: scale(0.95);
 }
 
-/* --- UPDATED SMALLER ICON SIZE --- */
+/* --- EXTRA SMALL ICON SIZE --- */
 .card .icon {
-    font-size: 18px; 
+    font-size: 12px; 
     margin-bottom: 2px;
 }
 
-/* --- UPDATED SMALLER CARD TEXT --- */
+/* --- EXTRA SMALL CARD TEXT --- */
 .card p {
     margin: 0;
-    font-size: 8px;
+    font-size: 7px; 
     font-weight: bold;
     color: white;
     text-transform: uppercase;
-    line-height: 1.1;
-    padding: 0 2px;
+    line-height: 1;
+    padding: 0 1px;
 }
 
 /* CARD COLORS */
@@ -144,8 +144,8 @@ body {
 
 .card-white .deal-text {
     font-weight: 900;
-    font-size: 14px;
-    letter-spacing: 2px;
+    font-size: 12px; /* Smaller to match */
+    letter-spacing: 1px;
     color: #333;
 }
 
