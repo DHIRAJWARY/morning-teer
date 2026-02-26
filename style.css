@@ -111,14 +111,16 @@ body {
     transform: scale(0.95); /* Click feedback effect */
 }
 
+/* ADJUSTED ICON SIZE */
 .card .icon {
-    font-size: 24px;
-    margin-bottom: 5px;
+    font-size: 22px; /* Made icons slightly smaller */
+    margin-bottom: 4px;
 }
 
+/* ADJUSTED CARD TEXT */
 .card p {
     margin: 0;
-    font-size: 10px;
+    font-size: 9px; /* Made text a bit smaller to fit better */
     font-weight: bold;
     color: white;
     text-transform: uppercase;
