@@ -22,21 +22,23 @@ database.ref('liveResult').on('value', (snapshot) => {
     const now = new Date();
     const hours = now.getHours(); // 0 is 12 AM
     
-    // If it is 12 AM (midnight), we show empty results for the new day
+    // Reset Logic: If it's 12 AM, clear results for the new day
     const isMidnight = (hours === 0); 
 
     if (data && !isMidnight) {
-        // --- Update Main Results ---
+        console.log("⚡ Live Data received:", data);
+        
+        // Main Page Results
         if(document.getElementById('res-date')) document.getElementById('res-date').innerText = data.date || "--/--/----";
         if(document.getElementById('fr-val')) document.getElementById('fr-val').innerText = data.fr || "--";
         if(document.getElementById('sr-val')) document.getElementById('sr-val').innerText = data.sr || "--";
 
-        // --- Update FR Common Numbers ---
+        // FR Common Numbers
         if(document.getElementById('fr-house')) document.getElementById('fr-house').innerText = data.fr_house || "--";
         if(document.getElementById('fr-ending')) document.getElementById('fr-ending').innerText = data.fr_ending || "--";
         if(document.getElementById('fr-common')) document.getElementById('fr-common').innerText = data.fr_common || "--";
 
-        // --- Update SR Common Numbers ---
+        // SR Common Numbers
         if(document.getElementById('sr-house')) document.getElementById('sr-house').innerText = data.sr_house || "--";
         if(document.getElementById('sr-ending')) document.getElementById('sr-ending').innerText = data.sr_ending || "--";
         if(document.getElementById('sr-common')) document.getElementById('sr-common').innerText = data.sr_common || "--";
@@ -52,27 +54,31 @@ database.ref('liveResult').on('value', (snapshot) => {
     console.error("Firebase Connection Error:", error);
 });
 
-// 4. PREVIOUS RESULTS LISTENER (History Page)
+// 4. PREVIOUS RESULTS LISTENER (History Page Injection)
 database.ref('history').on('value', (snapshot) => {
     const historyBody = document.getElementById('history-body');
-    if (!historyBody) return; // Exit if we aren't on the history page
+    if (!historyBody) return; // Only runs if the user is on the previous-results.html page
 
     const data = snapshot.val();
     if (data) {
-        // Convert Firebase history data to an array and reverse it (newest first)
+        // Convert history entries to array and reverse (newest first)
         const newItems = Object.values(data).reverse();
         
         let firebaseRows = "";
         newItems.forEach(item => {
             firebaseRows += `
-                <tr style="background-color: #fff9f0;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">${item.date}</td>
-                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">${item.fr}</td>
-                    <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">${item.sr}</td>
+                <tr class="firebase-row">
+                    <td>${item.date}</td>
+                    <td><strong>${item.fr}</strong></td>
+                    <td><strong>${item.sr}</strong></td>
+                    <td><span class="badge-confirmed">OFFICIAL</span></td>
                 </tr>`;
         });
 
-        // This adds new Firebase results ABOVE your old static results
-        historyBody.innerHTML = firebaseRows + historyBody.innerHTML;
+        // Remove previous dynamically added rows to prevent duplication during live updates
+        document.querySelectorAll('.firebase-row').forEach(el => el.remove());
+        
+        // Inject new rows at the very top of the <tbody>
+        historyBody.insertAdjacentHTML('afterbegin', firebaseRows);
     }
 });
