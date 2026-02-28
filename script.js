@@ -1,6 +1,6 @@
 // 1. YOUR FIREBASE CONFIG
 const firebaseConfig = {
-    apiKey: "AIzaSyD2bLQVv7Bwe2fUzrstGc640VaUjauxG3g",
+    apiKey: "AIzaSyD0_pryWiRPy_V83ZWw0YuJbIbbZY9WKzY",
     authDomain: "teer-ac8f5.firebaseapp.com",
     projectId: "teer-ac8f5",
     storageBucket: "teer-ac8f5.firebasestorage.app",
@@ -82,3 +82,4 @@ database.ref('history').on('value', (snapshot) => {
         historyBody.insertAdjacentHTML('afterbegin', firebaseRows);
     }
 });
+
