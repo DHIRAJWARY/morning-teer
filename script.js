@@ -16,18 +16,36 @@ if (!firebase.apps.length) {
 }
 const database = firebase.database();
 
-// 3. THE LIVE LISTENER (Home Page & Common Numbers)
+// 3. THE LIVE LISTENER + AUTO-RESET LOGIC
 database.ref('liveResult').on('value', (snapshot) => {
     const data = snapshot.val();
-    const now = new Date();
-    const hours = now.getHours(); // 0 is 12 AM
-    
-    // Reset Logic: If it's 12 AM, clear results for the new day
-    const isMidnight = (hours === 0); 
+    const todayStr = new Date().toLocaleDateString('en-GB'); // Current date DD/MM/YYYY
 
-    if (data && !isMidnight) {
-        console.log("⚡ Live Data received:", data);
-        
+    // --- AUTO-RESET & AUTO-SAVE TO HISTORY ---
+    // If data exists, has a date, and that date is NOT today...
+    if (data && data.date && data.date !== todayStr && data.date !== "Pending") {
+        console.log("Old date detected. Saving to history and resetting...");
+
+        // A. Save current data to history first
+        database.ref('history').push(data);
+
+        // B. Wipe the liveResult in the database
+        database.ref('liveResult').update({
+            date: "Pending",
+            fr: "--",
+            sr: "--",
+            fr_house: "--",
+            fr_ending: "--",
+            fr_common: "--",
+            sr_house: "--",
+            sr_ending: "--",
+            sr_common: "--"
+        });
+        return; // Exit to let the update trigger a fresh 'value' event
+    }
+
+    // --- DISPLAY LOGIC (Update your HTML) ---
+    if (data) {
         // Main Page Results
         if(document.getElementById('res-date')) document.getElementById('res-date').innerText = data.date || "--/--/----";
         if(document.getElementById('fr-val')) document.getElementById('fr-val').innerText = data.fr || "--";
@@ -42,28 +60,19 @@ database.ref('liveResult').on('value', (snapshot) => {
         if(document.getElementById('sr-house')) document.getElementById('sr-house').innerText = data.sr_house || "--";
         if(document.getElementById('sr-ending')) document.getElementById('sr-ending').innerText = data.sr_ending || "--";
         if(document.getElementById('sr-common')) document.getElementById('sr-common').innerText = data.sr_common || "--";
-
-    } else {
-        // Midnight Reset: Set all live displays to "--"
-        const elements = ['res-date', 'fr-val', 'sr-val', 'fr-house', 'fr-ending', 'fr-common', 'sr-house', 'sr-ending', 'sr-common'];
-        elements.forEach(id => {
-            if(document.getElementById(id)) document.getElementById(id).innerText = "--";
-        });
     }
 }, (error) => {
     console.error("Firebase Connection Error:", error);
 });
 
-// 4. PREVIOUS RESULTS LISTENER (History Page Injection)
+// 4. PREVIOUS RESULTS LISTENER (History Page)
 database.ref('history').on('value', (snapshot) => {
     const historyBody = document.getElementById('history-body');
-    if (!historyBody) return; // Only runs if the user is on the previous-results.html page
+    if (!historyBody) return; 
 
     const data = snapshot.val();
     if (data) {
-        // Convert history entries to array and reverse (newest first)
         const newItems = Object.values(data).reverse();
-        
         let firebaseRows = "";
         newItems.forEach(item => {
             firebaseRows += `
@@ -75,11 +84,7 @@ database.ref('history').on('value', (snapshot) => {
                 </tr>`;
         });
 
-        // Remove previous dynamically added rows to prevent duplication during live updates
         document.querySelectorAll('.firebase-row').forEach(el => el.remove());
-        
-        // Inject new rows at the very top of the <tbody>
         historyBody.insertAdjacentHTML('afterbegin', firebaseRows);
     }
 });
-
