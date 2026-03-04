@@ -58,3 +58,5 @@ database.ref('liveResult').on('value', (snapshot) => {
 });
 
 // STEP 4 HAS BEEN REMOVED SO IT DOES NOT OVERWRITE YOUR MANUAL HTML ROWS
+
+
