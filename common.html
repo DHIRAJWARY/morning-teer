@@ -3,54 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Common Numbers - Shillong Teer</title>
+    <title>Common Numbers - Shillong Morning Teer</title>
+    
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #f4f4f4; font-family: Arial, sans-serif;">
+<body>
 
-    <header style="background-color: #e67e22; padding: 15px; text-align: center; color: white;">
-        <h1 style="margin:0; font-size: 20px;">Ⓒ Common Numbers</h1>
+    <header class="main-header">
+        <h1>🎯 Common Numbers</h1>
     </header>
 
-    <div class="main-container" style="padding: 15px; max-width: 500px; margin: auto;">
+    <div class="main-container">
         
-        <div id="res-date" style="text-align: center; margin-bottom: 15px; font-weight: bold; font-size: 18px;">--/--/----</div>
+        <section class="results-section">
+            <div id="res-date" class="date-display">--/--/----</div>
 
-        <h3 style="color: #2c3e50; border-left: 5px solid #e67e22; padding-left: 10px;">First Round (FR)</h3>
-        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 25px; text-align: center;">
-            <tr style="background: #34495e; color: white; font-size: 12px;">
-                <th style="padding: 10px;">HOUSE</th>
-                <th style="padding: 10px;">ENDING</th>
-                <th style="padding: 10px;">DIRECT</th>
-            </tr>
-            <tr style="font-size: 22px; font-weight: bold; color: #2c3e50;">
-                <td id="fr-house" style="padding: 15px; border: 1px solid #ddd;">--</td>
-                <td id="fr-ending" style="padding: 15px; border: 1px solid #ddd;">--</td>
-                <td id="fr-common" style="padding: 15px; border: 1px solid #ddd; color: #e67e22;">--</td>
-            </tr>
-        </table>
+            <table class="result-table" style="margin-bottom: 20px;">
+                <thead>
+                    <tr style="background: #34495e; color: white;">
+                        <th colspan="2">SHILLONG MORNING (F/R)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="round-names">
+                        <td>HOUSE</td>
+                        <td>ENDING</td>
+                    </tr>
+                    <tr class="round-numbers" style="font-size: 32px;">
+                        <td id="fr-house">--</td>
+                        <td id="fr-ending">--</td>
+                    </tr>
+                    <tr style="background: #fdf2e9; border-top: 2px solid #eee;">
+                        <td colspan="2" style="padding: 15px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #d35400; text-transform: uppercase;">Direct Common Number</div>
+                            <div id="fr-common" style="font-size: 36px; font-weight: 900; color: #ff7f50;">--</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <h3 style="color: #2c3e50; border-left: 5px solid #27ae60; padding-left: 10px;">Second Round (SR)</h3>
-        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
-            <tr style="background: #34495e; color: white; font-size: 12px;">
-                <th style="padding: 10px;">HOUSE</th>
-                <th style="padding: 10px;">ENDING</th>
-                <th style="padding: 10px;">DIRECT</th>
-            </tr>
-            <tr style="font-size: 22px; font-weight: bold; color: #2c3e50;">
-                <td id="sr-house" style="padding: 15px; border: 1px solid #ddd;">--</td>
-                <td id="sr-ending" style="padding: 15px; border: 1px solid #ddd;">--</td>
-                <td id="sr-common" style="padding: 15px; border: 1px solid #ddd; color: #27ae60;">--</td>
-            </tr>
-        </table>
+            <table class="result-table">
+                <thead>
+                    <tr style="background: #34495e; color: white;">
+                        <th colspan="2">SHILLONG MORNING (S/R)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="round-names">
+                        <td>HOUSE</td>
+                        <td>ENDING</td>
+                    </tr>
+                    <tr class="round-numbers" style="font-size: 32px;">
+                        <td id="sr-house">--</td>
+                        <td id="sr-ending">--</td>
+                    </tr>
+                    <tr style="background: #ebf5fb; border-top: 2px solid #eee;">
+                        <td colspan="2" style="padding: 15px;">
+                            <div style="font-size: 11px; font-weight: bold; color: #2980b9; text-transform: uppercase;">Direct Common Number</div>
+                            <div id="sr-common" style="font-size: 36px; font-weight: 900; color: #34495e;">--</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-        <div style="text-align: center;">
-            <button onclick="window.history.back()" style="margin-top: 30px; padding: 12px 30px; background: #34495e; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
-                ← Back to Home
+        <div style="padding: 10px;">
+            <button onclick="location.href='index.html'" style="width: 100%; background: #2c3e50; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; font-size: 14px; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                ⬅ Back to Live Results
             </button>
         </div>
+
     </div>
 
     <script src="script.js"></script>
