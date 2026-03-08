@@ -37,43 +37,50 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div class="extra-details" style="display: flex; justify-content: space-around; margin-top: 15px; background: #fdfdfd; padding: 10px; border: 1px solid #ddd; border-radius: 10px;">
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 5px 0; color: #34495e;">F/R Details</h4>
+                    <p style="margin: 2px 0;">House: <span id="fr-house" style="font-weight: bold;">--</span></p>
+                    <p style="margin: 2px 0;">Ending: <span id="fr-ending" style="font-weight: bold;">--</span></p>
+                    <p style="margin: 2px 0;">Common: <span id="fr-common" style="font-weight: bold; color: #e67e22;">--</span></p>
+                </div>
+                <div style="width: 1px; background: #ddd; margin: 0 10px;"></div>
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 5px 0; color: #34495e;">S/R Details</h4>
+                    <p style="margin: 2px 0;">House: <span id="sr-house" style="font-weight: bold;">--</span></p>
+                    <p style="margin: 2px 0;">Ending: <span id="sr-ending" style="font-weight: bold;">--</span></p>
+                    <p style="margin: 2px 0;">Common: <span id="sr-common" style="font-weight: bold; color: #e67e22;">--</span></p>
+                </div>
+            </div>
         </section>
 
         <div class="card-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;">
-            
             <div class="card card-orange" onclick="location.href='common.html'">
                 <span class="icon">Ⓒ</span>
                 <p>Common Number</p>
             </div>
-
             <div class="card card-white">
                 <div class="deal-text"><strong>D E A L</strong></div>
             </div>
-            
             <div class="card card-orange" onclick="location.href='/dream.html'">
                 <span class="icon">👤</span><p>Dream Number</p>
             </div>
-
             <div class="card card-dark-teal" onclick="location.href='/analytics.html'">
                 <span class="icon">📊</span><p>Analytics</p>
             </div>
-            
             <div class="card card-brown" onclick="location.href='/target.html'">
                 <span class="icon">🏹</span><p>Predict Target</p>
             </div>
-            
             <div class="card card-teal" onclick="location.href='/previous-results.html'">
                 <span class="icon">🎯</span><p>Previous Result</p>
             </div>
-
             <div class="card card-light-teal" onclick="location.href='/calendar.html'">
                 <span class="icon">📅</span><p>Teer Calendar</p>
             </div>
-            
             <div class="card card-white-border" onclick="location.href='/counter.html'">
                 <span class="icon">🎯</span><p style="color:#a52a2a">Reputed Counter</p>
             </div>
-            
             <div class="card card-pink" onclick="location.href='/target.html'">
                 <span class="icon">🏹</span><p>Target App</p>
             </div>
@@ -95,4 +102,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
