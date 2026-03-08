@@ -1,4 +1,3 @@
-// 1. FIREBASE CONFIG
 const firebaseConfig = {
     apiKey: "AIzaSyD0_pryWiRPy_V83ZWw0YuJbIbbZY9WKzY",
     authDomain: "teer-ac8f5.firebaseapp.com",
@@ -10,43 +9,30 @@ const firebaseConfig = {
     databaseURL: "https://teer-ac8f5-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
-// 2. INITIALIZE
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const database = firebase.database();
 
-// 3. LIVE LISTENER
 database.ref('liveResult').on('value', (snapshot) => {
     const data = snapshot.val();
     if (!data) return;
 
-    // --- SHARED DATA (Date) ---
-    const dateEl = document.getElementById('res-date');
-    if(dateEl) dateEl.innerText = data.date || "--/--/----";
+    // Updates Date on both pages
+    if(document.getElementById('res-date')) document.getElementById('res-date').innerText = data.date || "--/--/----";
 
-    // --- HOME PAGE ONLY (fr-val, sr-val) ---
-    const frVal = document.getElementById('fr-val');
-    const srVal = document.getElementById('sr-val');
-    if(frVal) frVal.innerText = data.fr || "--";
-    if(srVal) srVal.innerText = data.sr || "--";
+    // Updates Home Page Live Results
+    if(document.getElementById('fr-val')) document.getElementById('fr-val').innerText = data.fr || "--";
+    if(document.getElementById('sr-val')) document.getElementById('sr-val').innerText = data.sr || "--";
 
-    // --- COMMON NUMBER PAGE ONLY ---
-    // First Round Details
-    const frh = document.getElementById('fr-house');
-    const fre = document.getElementById('fr-ending');
-    const frc = document.getElementById('fr-common');
-    if(frh) frh.innerText = data.fr_house || "--";
-    if(fre) fre.innerText = data.fr_ending || "--";
-    if(frc) frc.innerText = data.fr_common || "--";
+    // Updates Common Number Page Details
+    if(document.getElementById('fr-house')) document.getElementById('fr-house').innerText = data.fr_house || "--";
+    if(document.getElementById('fr-ending')) document.getElementById('fr-ending').innerText = data.fr_ending || "--";
+    if(document.getElementById('fr-common')) document.getElementById('fr-common').innerText = data.fr_common || "--";
 
-    // Second Round Details
-    const srh = document.getElementById('sr-house');
-    const sre = document.getElementById('sr-ending');
-    const src = document.getElementById('sr-common');
-    if(srh) srh.innerText = data.sr_house || "--";
-    if(sre) sre.innerText = data.sr_ending || "--";
-    if(src) src.innerText = data.sr_common || "--";
+    if(document.getElementById('sr-house')) document.getElementById('sr-house').innerText = data.sr_house || "--";
+    if(document.getElementById('sr-ending')) document.getElementById('sr-ending').innerText = data.sr_ending || "--";
+    if(document.getElementById('sr-common')) document.getElementById('sr-common').innerText = data.sr_common || "--";
 
 }, (error) => {
     console.error("Firebase Connection Error:", error);
