@@ -1,4 +1,4 @@
-// 1. YOUR FIREBASE CONFIG
+// 1. FIREBASE CONFIG
 const firebaseConfig = {
     apiKey: "AIzaSyD0_pryWiRPy_V83ZWw0YuJbIbbZY9WKzY",
     authDomain: "teer-ac8f5.firebaseapp.com",
@@ -10,40 +10,44 @@ const firebaseConfig = {
     databaseURL: "https://teer-ac8f5-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
-// 2. INITIALIZE FIREBASE
+// 2. INITIALIZE
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const database = firebase.database();
 
-// 3. THE LIVE LISTENER
-// I'm using 'liveResult' as per your latest JS, but if it doesn't work, 
-// check if your Firebase folder is actually named 'live-results'
+// 3. LIVE LISTENER
 database.ref('liveResult').on('value', (snapshot) => {
     const data = snapshot.val();
-    console.log("Data received from Firebase:", data); // This helps us debug in the console
+    if (!data) return;
 
-    if (data) {
-        // --- DISPLAY LOGIC (Home Page) ---
-        // These IDs now match your index.html exactly
-        if(document.getElementById('res-date')) {
-            document.getElementById('res-date').innerText = data.date || "--/--/----";
-        }
-        if(document.getElementById('fr-val')) {
-            document.getElementById('fr-val').innerText = data.fr || "--";
-        }
-        if(document.getElementById('sr-val')) {
-            document.getElementById('sr-val').innerText = data.sr || "--";
-        }
-        
-        // Additional fields if you decide to add them to your HTML later
-        if(document.getElementById('fr-house')) document.getElementById('fr-house').innerText = data.fr_house || "--";
-        if(document.getElementById('sr-house')) document.getElementById('sr-house').innerText = data.sr_house || "--";
-    } else {
-        console.warn("No data found at 'liveResult' path in Firebase.");
-    }
+    // --- SHARED DATA (Date) ---
+    const dateEl = document.getElementById('res-date');
+    if(dateEl) dateEl.innerText = data.date || "--/--/----";
+
+    // --- HOME PAGE ONLY (fr-val, sr-val) ---
+    const frVal = document.getElementById('fr-val');
+    const srVal = document.getElementById('sr-val');
+    if(frVal) frVal.innerText = data.fr || "--";
+    if(srVal) srVal.innerText = data.sr || "--";
+
+    // --- COMMON NUMBER PAGE ONLY ---
+    // First Round Details
+    const frh = document.getElementById('fr-house');
+    const fre = document.getElementById('fr-ending');
+    const frc = document.getElementById('fr-common');
+    if(frh) frh.innerText = data.fr_house || "--";
+    if(fre) fre.innerText = data.fr_ending || "--";
+    if(frc) frc.innerText = data.fr_common || "--";
+
+    // Second Round Details
+    const srh = document.getElementById('sr-house');
+    const sre = document.getElementById('sr-ending');
+    const src = document.getElementById('sr-common');
+    if(srh) srh.innerText = data.sr_house || "--";
+    if(sre) sre.innerText = data.sr_ending || "--";
+    if(src) src.innerText = data.sr_common || "--";
+
 }, (error) => {
     console.error("Firebase Connection Error:", error);
 });
-
-// STEP 4 REMOVED: Manual Mode is active for previous-results.html
