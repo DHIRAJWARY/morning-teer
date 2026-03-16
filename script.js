@@ -24,8 +24,6 @@ function performReset() {
 
 function checkMidnight() {
     const now = new Date();
-    
-    // Check exact time in India
     const indiaTime = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Asia/Kolkata',
         hour: '2-digit',
@@ -33,31 +31,31 @@ function checkMidnight() {
         hour12: false
     }).format(now);
 
-    // If it's 12:00 AM, trigger the reset
     if (indiaTime === "00:00") {
         performReset();
     }
 }
 
-// Check every 60 seconds
 setInterval(checkMidnight, 60000);
 
 // 3. THE LIVE DISPLAY LISTENER
-// This only updates the text on your screen; it does NOT reset anything.
 database.ref('liveResult').on('value', (snapshot) => {
     const data = snapshot.val();
     if (data) {
-        // Update the date and the main FR/SR numbers
+        // Main Home Page IDs
         if(document.getElementById('res-date')) document.getElementById('res-date').innerText = data.date || "--/--/----";
         if(document.getElementById('fr-val')) document.getElementById('fr-val').innerText = data.fr || "--";
         if(document.getElementById('sr-val')) document.getElementById('sr-val').innerText = data.sr || "--";
         
-        // Update the bottom fields if they exist in your HTML
-        if(document.getElementById('fr-h')) document.getElementById('fr-h').innerText = data.fr_house || "--";
-        if(document.getElementById('fr-e')) document.getElementById('fr-e').innerText = data.fr_ending || "--";
-        // ... add any other IDs you use for common numbers here
+        // Common Page IDs - MATCHED TO YOUR HTML
+        if(document.getElementById('fr-house')) document.getElementById('fr-house').innerText = data.fr_house || "--";
+        if(document.getElementById('fr-ending')) document.getElementById('fr-ending').innerText = data.fr_ending || "--";
+        if(document.getElementById('fr-common')) document.getElementById('fr-common').innerText = data.fr_common || "--";
+        
+        if(document.getElementById('sr-house')) document.getElementById('sr-house').innerText = data.sr_house || "--";
+        if(document.getElementById('sr-ending')) document.getElementById('sr-ending').innerText = data.sr_ending || "--";
+        if(document.getElementById('sr-common')) document.getElementById('sr-common').innerText = data.sr_common || "--";
     }
 });
 
-// Run one check immediately when page loads
 checkMidnight();
