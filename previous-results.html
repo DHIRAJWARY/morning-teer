@@ -16,6 +16,10 @@
         .history-table td { padding: 12px; text-align: center; border-bottom: 1px solid #eee; font-size: 14px; }
         .history-table tr:nth-child(even) { background: #f9f9f9; }
         .badge-confirmed { background: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+        
+        /* Added for the header layout */
+        .logo-area { display: flex; align-items: center; padding: 10px; }
+        .main-header h1 { font-size: 20px; margin: 0; }
     </style>
 </head>
 <body>
@@ -25,18 +29,18 @@
             <h1>Previous Results</h1>
         </div>
     </header>
-<
+
     <div class="main-container history-container">
         <table class="history-table">
             <thead>
-                
+                <tr>
                     <th>Date</th>
                     <th>F/R</th>
                     <th>S/R</th>
-                    <th>Status</th<
-                                     
+                    <th>Status</th>
+                </tr>
+            </thead>
             <tbody id="history-body">
-
                 <tr><td>15/03/2026</td><td><strong>17</strong></td><td><strong>62</strong></td><td><span class="badge-confirmed">OFFICIAL</span></td></tr>
                 <tr><td>14/03/2026</td><td><strong>82</strong></td><td><strong>76</strong></td><td><span class="badge-confirmed">OFFICIAL</span></td></tr>
                 <tr><td>13/03/2026</td><td><strong>34</strong></td><td><strong>44</strong></td><td><span class="badge-confirmed">OFFICIAL</span></td></tr>
